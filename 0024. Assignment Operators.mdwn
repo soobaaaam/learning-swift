@@ -1,0 +1,24 @@
+# <Assignment Operators(할당 연산자)><br/><br/>
+
+*a == b*<br/><br/>
+
+ex)<br/>
+`let a = 12`<br/>
+`var b = 34`<br/>
+`b = a`<br/><br/>
+
+**할당 연산자를 기준으로 왼쪽 : lvalue**<br/>
+**할당 연산자를 기준으로 오른쪽 : rvalue**<br/><br/>
+
+👉 lvalue는 rvalue로도 사용될 수 있다(반대는 불가능)<br/><br/>
+
+### Compound Assignment Operators(복합 할당 연산자)
+
+*a += b*  👉  a = a + b<br/><br/>
+
+```swift
+var a = 1
+var b = 2
+a += b
+```
+👉 a = 3

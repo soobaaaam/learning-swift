@@ -1,0 +1,43 @@
+# while Loop
+```swiwft
+while condition {
+    statements
+}
+```
+```swift
+var num = 1
+var sum = 0
+
+while num <= 100 {
+    sum += num
+    num += 1
+}
+sum
+```
+👉 5050<br/><br/>
+
+## repeat-while
+
+```swift
+repeat {
+    statements
+} while condition
+```
+```swift
+var num = 100
+while num < 100 {
+    num += 1
+}
+num
+👉 100
+```
+```swift
+num = 100
+repeat {
+    num += 1
+} while num < 100
+num
+👉 101
+```
+**조건을 먼저 판단해야 한다면 while문, 코드를 먼저 실행해야 한다면 repeat-while문을 사용한다**
+**반복문이 무한 루프에 빠지지 않도록 condition이 특정 시점에 false가 되는지 확인해야한다**

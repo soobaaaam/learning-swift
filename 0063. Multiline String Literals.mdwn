@@ -1,0 +1,9 @@
+# Multiline String Literals
+```swift
+let multiline = """
+Lorem ipsum asdjfasdf asdfjasdfjdf, efwaegg, asdfajwe , sdjsadkfj
+sadfjasdf, sadfsdf,
+""" //큰 따옴표와 다른 새로운 line에서 문자열이 시작해야한다
+```
+**마지막에 있는 큰 따옴표는 항상 첫 번째 줄과 동일 선상에 있거나 왼쪽에 있어야한다**<br/>
+**줄 마지막에 \를 추가하면 줄바꿈이 되지않는다(코드에서 가독성을 높일 때 사용한다)**

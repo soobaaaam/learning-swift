@@ -1,0 +1,92 @@
+# String Options #1
+
+## Case Insensitive Option
+```swift
+"A" == "a" //false
+"A".caseInsensitiveCompare("a") == .orderedSame //true (caseInsensitiveCompare는 ComparisonResult를 return하기 때문에 orderedSame과 비교해야한다)(단순히 대소문자를 무시)
+
+"A".compare("a", options: [.caseInsensitive]) == .orderedSame //true (대소문자를 무시하면서 다른 문자열 option을 함께 사용해야할 때 사용)
+```
+## Literal Option
+```swift
+let a = "\u{D55C}" //한
+let b = "\u{1112}\u{1161}\u{11AB}" //한
+
+a == b //true
+a.compare(b) == .orderedSame //true
+
+a.compare(b, options: [.literal]) == .orderedSame //false (literal option이 더 빠르다)
+```
+
+# Backwards Option
+```swift
+let korean = "행복하세요"
+let english = "Be happy"
+let arabic = " كن سعيدا" //아랍어는 오른쪽에서 왼쪽으로 읽는다
+
+//문자열 시작 부분 : Leading, 문자열 끝 부분 : Trailing
+
+if let range = english.range(of: "p") {
+    english.distance(from: english.startIndex, to: range.lowerBound)
+}
+```
+👉 `5`<br/><br/>
+
+```swift
+if let range = english.range(of: "p", options: [.backward]) { //backward 때문에 trailing에서 leading 뱡향으로 검색한다
+    english.distance(from: english.startIndex, to: range.lowerBound)
+}
+```
+👉 `6`<br/><br/>
+
+## Anchored Option
+
+: 전체 문자열을 대상으로 검색하지 않고, 검색 범위를 문자열 시작 부분이나 마지막 부분으로 제한한다<br/><br/>
+
+```swift
+let str = "Swift Programming"
+
+if let result = str.range(of: "Swift") {
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+```
+👉 `0`<br/><br/>
+
+```swift
+if let result = str.range(of: "Swift", options: [.backwards]) {
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+```
+👉 `0`<br/><br/>
+```swift
+if let result = str.range(of: "Swift", options: [.anchored]) {
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}
+```
+👉 `0`<br/><br/> 
+
+```swift
+if let result = str.range(of: "Swift", options: [.anchored, .backwards]) {
+    print(str.distance(from: str.startIndex, to: result.lowerBound))
+} else {
+    print("not found")
+}  
+```
+👉 `not found //backwards 때문에 마지막 부분만 검색한다`<br/><br/>
+
+```swift
+str.hasPrefix("swift") //false
+str.hasSuffix("swift") //false
+
+str.lowercase().hasPrefix("swift") //true
+
+if let _ = str.range(of: "swift", options: [.anchored, .caseInsensitive]) {
+    print("same prefix")
+} //same prefix
+```

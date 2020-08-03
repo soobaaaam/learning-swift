@@ -1,0 +1,39 @@
+# Comparison Operator(비교 연산자)<br/><br/>
+
+```swift
+let a = 12
+let b = 34
+```
+
+### Equal to Operator<br/><br/>
+
+`a == b` 👉 false<br/>
+`"swift" == "Swift"` 👉 false<br/><br/>
+
+```swift
+let c = 12.34
+```
+
+`a == c` 👉 에러 (같은 자료형만 비교 가능하다)<br/><br/>
+
+### Not equal to Operator<br/><br/>
+
+`a != b` 👉 true<br/><br/>
+
+### Greater than Operator<br/><br/>
+
+`a > b` 👉 false<br/>
+`"swift" > "Swift"` 👉 true (문자열에서 크기 비교 연산자를 사용할 때는 문자에 할당되어 있는 아스키코드나 유니코드를 비교한다. S : 123, s : 163)<br/><br/>
+
+### Greater than or equal to Operator<br/><br/>
+
+`7 > 7` 👉 false<br/>
+`7 >= 7` 👉 true<br/><br/>
+
+### Less than Operator<br/><br/>
+
+`a < b` 👉 true<br/><br/>
+
+### Less than or equal to Operator<br/><br/>
+
+`a <= b` 👉 true

@@ -1,0 +1,51 @@
+# Inheritance
+
+: swift에서는 다중상속을 지원하지 않는다.<br/>
+
+## Syntax
+```swift
+class ClassName: SuperClassNmae {
+
+}
+```
+## Example
+```swift
+class Figure {
+    var name = "Unknown"
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Circle: Figure {
+    var radius = 0.0
+}
+
+let c = Circle(name: "Circle")
+c.radius
+c.name
+c.draw()
+```
+## final class
+```swift
+//Syntax
+final class ClassName: SuperClassName {
+
+}
+```
+```swift
+//Example
+final class Rectangle: Figure {
+    var width: 0.0
+    var height = 0.0
+}
+
+class Square: Rectangle {
+
+}
+```

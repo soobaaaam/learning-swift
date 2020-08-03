@@ -1,0 +1,48 @@
+# Set #1
+
+1. 정렬 순서보다 검색 속도가 중요한 경우에 배열 대신 사용된다.
+2. 배열처럼 하나의 데이터를 하나의 요소로 저장하지만 dictionary처럼 정렬되지 않는다.(index를 사용하지 않는다.)
+3. 동일한 값을 하나만 저장한다(Single Unique Value).
+4. 이미 존재하는 값을 추가하면 추가되지 않고 무시된다.
+5. Hashing 알고리즘을 사용한다.
+
+## Set Type
+
+*Set\<T>*<br/>
+```swift
+let set = [1, 2, 2, 3, 3, 3] //형식 추론을 사용하면 배열로 인식한다. 따라서 set을 만들려면 형식 추론을 사용하면 안된다
+set.count //6(배열은 중복된 요소를 허용한다)
+
+let set: Set<Int> = [1, 2, 2, 3, 3, 3] //자료형을 직접 지정해야 배열이 아닌 set이 만들어진다
+set.count //3(set은 중복된 요소를 허용하지 않는다)
+
+let set: Set = [1, 2, 2, 3, 3, 3] //요소의 자료형을 생략하는 것은 가능하다
+```
+## Inspecting a Set
+```swift
+set.count //3
+set.isEmpty //false
+```
+## Testing for Membership
+: 요소가 포함되어 있는지 확인<br/>
+```swift
+set.contains(1) //true
+```
+## Adding and Removing Elements
+```swift
+var words = Set<String>()
+
+var insertResult = words.insert("Swift")
+insertResult.inserted //true(결과를 튜플로 리턴한다)
+insertResult.memberAfterInsert //Swift
+
+var insertResult = words.insert("Swift")
+insertResult.inserted //false(중복된 요소를 허용하지 않는다)
+insertResult.memberAfterInsert //Swift
+
+var updateResult = words.update(with: "Swift") //Swift
+updateResult //Swift
+
+var updateResult = words.update(with: "Apple") //nil
+updateResult //nil
+```

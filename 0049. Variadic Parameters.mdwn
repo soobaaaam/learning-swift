@@ -1,0 +1,28 @@
+# Variadic Parameters(가변 Parameters)
+
+`(name: Type...)//형태`<br/><br/>
+
+`print("Hello")` 👉 argument 1개<br/><br/>
+
+`print("Hello", "Swift")` 👉 argument 2개, parameter 1개<br/><br/>
+
+```swift
+func printSum(of nums: Int...) {
+    var sum = 0
+    for num in nums {
+        sum += num
+    }
+    print(sum)
+}
+
+printSum(of: 1, 2, 3)
+printSum(of: 1, 2, 3, 4, 5)
+```
+👉 `6`<br/>
+👉 `15`<br/><br/>
+
+1. 하나의 parameter로 두 개 이상의 argument를 전달할 수 있다
+2. argument는 배열 형태로 전달된다
+
+
+

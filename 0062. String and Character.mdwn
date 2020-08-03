@@ -1,0 +1,53 @@
+# Strings and Characters
+
+```swift
+let s = "String"
+let c = "C" //큰 따옴표 사이에는 문자의 수와 상관없이 항상 String이다
+
+let d: Character = "CC" //에러 👉 Character 자료형에는 하나의 문자만 저장할 수 있다
+
+let emptyChar: Character = " " //빈 문자를 저장하고 싶다면 큰 따옴표 사이에 한 칸을 띄어야한다
+```
+```swift
+let emptyString = " " // 빈 문자열이 아닌 공백이 포함된 문자열임(큰 따옴표 사이 한 칸이 띄어져있으므로)
+emptyString.count
+```
+👉 1<br/><br/>
+
+## String Types
+
+*String -> Swift String*<br/>
+*NSString -> Foundation String*<br/><br/>
+
+**Swift String과 Foundation String은 서로 호환된다**<br/><br/>
+
+```swift
+var nsstr: NSString = "str"
+
+let swiftStr: String = nsstr as String //Type Casting
+
+nsstr = swiftStr as NSString
+```
+**Tool-Free Bridged 👉 Type Casting으로 호환되는 자료형**<br/><br/>
+
+## Mutability
+```swift
+let immutableStr = "str"
+
+var mutableStr = "new str"
+mutableStr = "new str" // 문자열을 변수로 선언하면 새로운 문자열을 생성할 수 있다
+```
+## Unicode
+```swift
+let str = "Swift String"
+
+str.utf8
+str.utf16
+
+var thumbUp = "👍"
+
+thumbUp = "\u{1F44D}"
+
+//올린 엄지
+//유니코드: U+1F44D, UTF-8: F0 9F 91 8D
+```

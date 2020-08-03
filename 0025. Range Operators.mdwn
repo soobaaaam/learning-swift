@@ -1,0 +1,83 @@
+# <Range Operators(범위 연산자)><br/><br/>
+
+### Closed Range Operator
+*a ... b*<br/>
+*a...*<br/>
+*...a*<br/><br/>
+
+`1 ... 10` 👉 lower bound : 1, upper bound :10 (lower bound와 upper bound가 범위에 포함된다)<br/>
+`10 ... 1` 👉 내림차순은 불가능하다<br/>
+**내림차순 표현 방법**<br/>
+`(1 ... 10).reversed()`<br/><br/>
+
+`12.34 ... 56.78` 👉 실수도 가능하다<br/><br/>
+
+```swift
+var sum = 0
+for num in 1 ... 10{
+    num
+    sum += num
+}
+sum
+```
+👉 55 (1부터 10까지의 합)<br/><br/>
+
+```swift
+let list = ["A", "B" ,"C", "D", "E"]
+list[2...]
+list[...2]
+```
+👉<br/>
+`["C", "D", "E"]`<br/>
+`["A", "B", "C"]`<br/><br/>
+
+```swift
+for num in 1... {
+    print(num)
+}
+```
+👉 무한 루프에 빠지게 된다(upperbound를 생략할 때는 반드시 고정된 범위에서 사용해야한다)<br/><br/>
+
+### Half-Open Range Operator
+: upperbound가 포함되지 않는다<br/>
+`a ..< b`<br/>
+`..<a`<br/><br/>
+
+```swift
+sum = 0
+for num in 1 ..< 10{
+    sum += num
+}
+sum
+```
+👉 45(1부터 9까지의 합)<br/><br/>
+
+```swift
+list[..<2]
+```
+👉<br/>
+`["A","B"]`<br/><br/>
+
+```swift
+for num in ..<10{
+    print(num)
+}
+```
+👉 오류 (단항으로는 사용 불가)<br/><br/>
+
+**특정값이 범위에 속하는지 확인하는 코드**<br/>
+```swift
+let range = 0 ... 5
+range.contains(7)
+range.contains(1)
+```
+👉<br/>
+`false`<br/>
+`true`<br/><br/>
+
+```swift
+let range = ...5
+range.contains(-1)
+```
+👉 true(lowerbound가 무한대이다)
+

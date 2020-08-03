@@ -1,0 +1,40 @@
+# Enumerations (열거형)
+: 연관된 상수들을 하나의 이름으로 묶은 자료형<br/><br/>
+
+*열거형을 사용하는 이유*<br/>
+: 코드의 안전성과 가독성이 높아진다.<br/>
+
+## Syntax
+```swift
+enum TypeName {
+    case caseName
+    case caseName, caseName //여러 case를 선언할 때
+}
+```
+## Example Code
+```swift
+enum Alignment {
+    case left
+    case light
+    case center
+}
+
+Alignment.center //.을 찍으면 case 목록이 자동완성으로 보이기 때문에 열거형 선언을 보지 않더라도 case 목록을 알 수 있다
+
+var textAlignment = Alignment.center
+
+textAlignment = .left
+
+if textAlignmnet == .center {
+
+}
+
+switch textAlignment {
+case .left:
+    print("left")
+case .right:
+    print("right")
+case .center:
+    print("center")
+}
+```

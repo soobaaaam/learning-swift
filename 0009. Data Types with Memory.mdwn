@@ -1,0 +1,37 @@
+# Data Types with Memory<br/><br/>
+
+### 자료형 : 메모리에 저장되는 데이터의 종류와 크기를 설정한다<br/><br/>
+
+### Int : 숫자 저장. 32bit 환경에서 4byte, 64bit 환경에서 8byte 크기를 가진다<br/><br/>
+
+Swift에서는 저장할 데이터의 종류에 따라 5가지로 구분한다<br/>
+1. Integer Type : 정수 저장<br/>
+2. Floating-point Type : 소수점이 포함된 수를 저장<br/>
+3. Boolean Type : 참과 거짓을 나타내는 값을 표현<br/>
+4. Character Type : 하나의 문자를 저장<br/>
+5. String Type : 하나 이상의 문자를 저장<br/><br/>
+
+class나 구조체를 알고 나서는 직접 자료형을 만드는 custom data type을 사용 가능하다<br/><br/>
+
+### Memory<br/>
+1,0을 저장할 수 있는 저장 공간을 가진 반도체<br/><br/>
+
+### Bit<br/>
+정보의 기본 단위. 0,1을 저장 가능하다<br/><br/>
+
+### Byte<br/>
+Bit가 8개 모인 프로그래밍 언어의 기본 단위<br/><br/>
+
+0 0 0 1 0 1 1 0 에서 제일 앞의 0은 MSB(Most Significant Bit), 제일 뒤의 0은 LSB(Least Significant Bit)<br/><br/>
+
+음수, 0, 양수를 모두 저장할 수 있다면 👉 Signed 자료형<br/>
+0과 양수만 저장할 수 있다면 👉 Unsigned 자료형<br/><br/>
+
+MSB가 0이라면 양수, 1이라면 음수를 나타낸다. 이를 Sign Bit라 표현한다<br/><br/>
+
+### 실수를 표현하는 방식(Floating-point)의 특징<br/>
+1. 실수를 저장할 때는 지수와 가수를 나눠서 저장한다<br/>
+2. 동일한 메모리 크기에서 정수에 비해 더 넓은 범위를 표현할 수 있다<br/>
+3. 부동소수점 오차로 인해서 100% 정확한 실수를 저장할 수 없다.<br/><br/>
+
+Swift에서는 overflow를 허용하지 않는다. 따라서 overflow 연사자를 사용해야 메모리에 저장하라 수 있는 값보다 큰 값을 저장할 수 있다

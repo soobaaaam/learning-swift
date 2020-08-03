@@ -1,0 +1,34 @@
+# Parameters
+
+```swift
+func name(name: Type, name: Type) -> ReturnType {
+    statements
+} //형태
+```
+```swift
+func add(a: Int, b: Int) -> Int {
+    a = 12 //오류(parameter는 함수 body에서 사용할 수 있는 임시 상수)
+    return a + b
+}
+```
+## Calling Functions
+
+`functionName(parameterName: expression)//형태`<br/><br/>
+
+`add(a: 12, b: 34)`<br/>
+👉 `46`<br/><br/>
+
+## Default Value
+
+`(name: Type = Value)//형태`<br/><br/>
+
+```swift
+func sayHello(to: String = "Stranger") {
+    print("Hello, \(to)")
+}
+
+sayHello(to: "Swift")
+```
+👉 `Hello, Swift`<br/><br/>
+
+**parameter의 scope는 함수 body로 제한된다**

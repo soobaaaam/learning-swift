@@ -1,0 +1,28 @@
+# Nested Types (포함된 형식)
+
+## Syntax
+```swift
+String.CompareOptions
+```
+String 👉 Structure<br/>
+CompareOptions 👉 Structure<br/>
+
+## Example
+```swift
+class One {
+    struct Two {
+        enum Three {
+            case a 
+
+            class Four{
+
+            }
+        }
+    }
+
+    var a = Two() //One 클래스 내부에서는 Two 구조체를 바로 인식할 수 있으므로 One.을 생략해도 무관하다
+}
+
+let two: One.Two = One.Two()
+```
+

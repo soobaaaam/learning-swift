@@ -1,0 +1,68 @@
+# Dictionary #1
+
+1. 하나의 요소(element)에 key와 value(값)가 함께 저장된다.
+2. key는 유일한 값을 가져야한다.
+3. 값은 다른 값과 중복되어도 상관없다
+4. collection에 저장된 요소는 정렬되지 않는다(Unordered Collection) 👉 인덱스는 존재하지만 사용되지않는다.
+5. 모든 요소의 자료형은 같아야한다. (각 요소들의 key와 값들의 자료형이 모두 같아야한다)
+
+## Dictionary Literal
+
+*[key: value, key: value, ...]*<br/>
+```swift
+var dict = ["A": "Apple", "B": "Banana"] //2개의 요소
+
+dict = [:] //빈 dictionary
+```
+## Dictionary Type
+
+정식 문법 : *Dictionary<K, V>* <br/>
+단축 문법 : *[K:V]*<br/>
+```swift
+let dict1: Dictionary<String, Int> //정식 문법
+let dict2: [String: Int] //단축 문법
+```
+## Creating a Dictionary
+```swift
+let words = ["A": "Apple", "B": "Banana", "C": "City"]
+
+let emptyDict: [String: String] = [:] //빈 dictionary
+
+let emptyDict2 = [String: String]() //단축문법을 이용한 빈 dictionary
+let emptyDict3 = Dictionary<String, String>() //정식문법을 이용한 빈 dictionary
+```
+## Inspecting a Dictionary
+```swift
+words.count //3
+words.isEmpty //false
+```
+## Accessing Keys and Values
+```swift
+//값을 바로 검색하는 방법은 없다. 따라서 key를 통해서 값을 검색한다
+words["A"] //Apple(key를 전달)
+words["Apple"] //nil(값을 전달)
+
+let a = words["E"] //nil
+
+//만약 전달하는 key가 존재하지 않는다면 기본값을 리턴하도록 구현
+let b = words["E", default: "Empty"] //Empty
+
+//key를 출력
+for k in words.keys {
+    print(k)
+} //B A C
+
+//값을 출력
+for v in words.values {
+    print(v)
+} //Banana Apple City
+
+//오름차순으로 정렬된 것을 출력
+for k in words.keys.sorted() {
+    print(v)
+} //A B C
+
+//두 속성을 리턴하는 값을 배열로 바꾸는 코드(배열 생성자로 전달)
+let keys = Array(words.keys)
+let values = Array(words.values)
+```

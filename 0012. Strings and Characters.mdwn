@@ -1,0 +1,17 @@
+# Strings and Characters<br/><br/>
+
+" "로 표현한다<br/>
+"Have a nice day", "1" 모두 문자열이다<br/><br/>
+
+하나의 문자를 문자 자료형으로 표현하고 싶다면 반드시 자료형을 직접 지정해야한다<br/><br/>
+
+`let str = "1"` 👉 String<br/>
+`let ch: Character = "1"` 👉 Character<br/><br/>
+
+`let doubleCh: Character = "AA"` 👉 오류 (두 개의 문자 저장 불가능)<br/><br/>
+
+큰 따옴표 사이에 문자가 하나 👉 String or Character<br/>
+큰 따옴표 사이에 문자가 두 개  👉 형상 String<br/><br/>
+
+빈 문자를 저장할 때<br/>
+`let emptyCh: Character = " "`

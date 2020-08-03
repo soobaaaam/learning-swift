@@ -1,0 +1,44 @@
+# Type Inference (형식추론)
+
+`let num = 123`<br/>
+에서 처럼 상수의 자료형을 명시적으로 선언하지 않았다면 초기값을 통해 자료형을 알아서 결정한다.<br/><br/>
+
+정수 literal 👉 int 로 추론된다. int가 정수를 가장 빠르게 추론하기 때문이다<br/><br/>
+
+`let temp = 11.2`<br/>
+double로 추론된다<br/><br/>
+
+`let str = "Swift"`<br/>
+string으로 추론<br/><br/>
+
+`let a = true`<br/>
+bool로 추론<br/><br/>
+
+`let value` 👉 오류<br/>
+초기값이 없다면 형식추론도 불가능<br/><br/>
+
+###Type Annotation<br/>
+: type을 직접 설정하는것<br/><br/>
+
+*let name: Type = value*<br/>
+*var name: Type = value*<br/><br/>
+
+`let num: Int = 123`<br/><br/>
+
+```swift
+let value: double
+value = 12.3
+```
+👉선언과 초기화를 분리할 수 있음<br/><br/>
+
+👉형식 추론이 가능한데 왜 annotation을 하는가 : 지정하지 않으면 int, double, string 같이 형식추론을
+통해 지정되므로 특정 자료형을 사용하고 싶을 때 annotation을 이용한다<br/><br/>
+
+`let ch: Character = "c"`<br/><br/>
+
+컴파일 시간을 단축시킬때 annotation을 쓸 수 있다
+
+
+
+
+

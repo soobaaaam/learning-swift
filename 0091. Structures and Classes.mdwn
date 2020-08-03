@@ -1,0 +1,70 @@
+# Structures and Classes
+
+## Structure
+
+1. 비교적 작은 데이터를 저장하거나 값 형식이 필요한 경우에만 구조체로 구현한다.
+2. 스위프트에서 구조체는 클래스의 기능을 거의 다 지원한다.
+3. 클래스와 다르게 객체가 아닌 '값'으로 부른다.
+4. stack에 값을 저장한다.
+5. 값 형식이다.
+
+### Structure Syntax
+```swift
+struct StructName {
+    property
+    method
+    initializer
+    subscript
+}
+```
+### Structure Example
+```swift
+struct Person {
+    var name: String
+    var age: Int
+
+    func speak() {
+        print("Hello")
+    }
+}
+
+let p = Person(name: "Steve", age: 50) //인스턴스 생성
+
+p.name //name 속성에 접근
+p.age //age 속성에 접근
+
+p.speak() //메소드 호출
+```
+## Class
+
+1. 추상화의 결과를 코드로 표현한 것.
+2. 객체의 특징과 상태는 속성으로 구현하고, 객체의 동작은 메소드로 구현한다.
+3. 클래스는 객체를 생성하기 위한 설계도이다.
+4. 하나의 클래스를 통해 필요한만큼의 여러 객체를 생성한다.
+5. 클래스를 통해 생성된 하나의 객체를 'instance'라 한다.
+6. 객체 지향 언어에서는 객체들이 서로 상호 작용을 한다. (다른 객체의 속성을 바꾸거나 메소드를 호출하는 것)
+7. heap에 값을 저장한다.
+8. 참조 형식이다.
+9. 소멸자, 생성, reference counting이 가능하다.
+
+### Class Syntax
+```swift
+class ClassName {
+    property
+    method
+    initializer
+    deinitializer
+    subscript
+}
+```
+### Class Example
+```swift
+class Person {
+    var name = "John Doe"
+    var age = 0
+
+    func speak() {
+        print("Hello")
+    }
+}
+```

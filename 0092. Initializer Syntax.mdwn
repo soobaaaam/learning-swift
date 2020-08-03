@@ -1,0 +1,42 @@
+# Initializer Syntax
+
+1. 열거형, 구조체, 클래스는 모두 설계도이다.
+2. 설계도에 따라 인스턴스를 만들기 위해서는 초기화 과정이 반드시 필요하다.
+3. 생성자를 호출하면 초기화가 시작되고, 생성자 실행이 완료되면 모든 속성이 초기화된다.
+4. 에러 없이 초기화가 완료되면 인스턴스가 생성된다.
+
+## 생성자 선언 문법
+```swift
+init(parameters) {
+    statements
+}
+```
+## Example
+```swift
+let str = "123"
+let num = Int(str)
+
+class Position {
+    var x: Double
+    var y: Double
+    
+    init() {
+        x = 0.0
+        y = 0.0
+    }
+
+    init(value: Double) {
+        x = value
+        y = value
+    }
+}
+
+//생성자 호출
+let a = Position()
+a.x //0
+a.y //0
+
+let b = Position(value: 100)
+b.x //100
+b.y //100
+```

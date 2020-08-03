@@ -1,0 +1,23 @@
+# Functions
+: 함수는 특정 기능을 수행하는 코드 조각<br/><br/>
+
+## Calling Funcions(함수 호출)
+`functionName(parameters) //형태`<br/><br/>
+
+`print("hello") //print함수 호출`<br/><br/>
+
+## Defining Functions(함수 선언, 함수 구현)
+```swift
+func name(parameters) -> ReturnType //function head{
+    statements //function body
+}//형태
+```
+```swift
+func sayHello() {
+    print("hello, swift")
+}
+
+sayHello()
+```
+👉 `hello, swift`
+

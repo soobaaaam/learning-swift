@@ -1,0 +1,124 @@
+# String Editing #2
+
+## Replacing Substrings
+
+```swift
+var str = "Hello, Objective-C"
+
+if let range = str.range(of: "Objective-C") { //타겟을 확실히 알기 때문에 range of를 사용한다
+    str.replaceSubrange(range, with: "Swift")
+}
+
+str
+```
+👉 `Hello,Swift`<br/><br/>
+
+```swift
+if let range = str.range(of: "Hello") {
+    let s = str.replacingCharacters(in: range, with: "Hi")
+
+    s //Hi,Swift
+    str //Hello,Swift
+}
+```
+👉<br/>
+`Hi,Swift`<br/>
+`Hello,Swift`<br/><br/>
+
+```swift
+var s = str.replacingOccurrences(of: "Swift", with: "Awesome Swift")
+s
+```
+👉 `Hello,AwesomeSwift`<br/><br/>
+
+```swift
+s = str.replacingOccurrences(of: "Swift", with: "Awesome Swift", options: [.caseInsensitive]) // 대소문자를 구분하지 않는 option
+```
+👉 `Hello,AwesomeSwift`<br/><br/>
+
+## Removing Substrings
+
+```swift
+var str = "Hello, Awesome Swift!!!"
+
+let lastCharIndex = str.index(before: str.endIndex)
+
+var removed = str.remove(at: lastCharIndex)
+
+removed //!
+str //Hello,AwesomeSwift!!
+```
+👉<br/>
+`!`<br/>
+`Hello,AwesomeSwift!!`<br/><br/>
+
+```swift
+removed = str.removeFirst()
+removed //H
+str //ello,AwesomeSwift!!
+```
+👉<br/>
+`H`<br/>
+`ello,AwesomeSwift!!`<br/><br/>
+
+```swift
+str.removeFirst(2) //parameter를 전달하면 삭제된 문자는 return하지 않는다
+str
+```
+👉 `lo,AwesomeSwift!!`<br/><br/>
+
+```swift
+str.removeLast() //!
+str //lo,AwesomeSwift!
+```
+👉<br/>
+`!`<br/>
+`lo,AwesomeSwift!`<br/><br/>
+
+```swift
+str.removeLast(2)
+str
+```
+👉 `lo,AwesomeSwif`<br/><br/>
+
+```swift
+if let range = str.range(of: "Awesome") { //범위를 삭제한다
+    str.removeSubrange(range)
+    str
+}
+```
+👉 `lo, Swif`<br/><br/>
+
+```swift
+str.removeAll() //parameter 없이 호출하면 메모리 공간도 함께 삭제된다
+str
+```
+👉 빈문자열<br/><br/>
+
+*만약 문자열이 초기화되고 비슷한 길이의 다른 문자열을 다시 저장한다면 메모리 공간을 유지하는 것이 좋다*<br/>
+```swift
+str.removeAll(keepingCapacity: true) //메모리 공간 유지
+```
+👉 빈문자열(메모리 공간은 유지)<br/><br/>
+
+```swift
+str = "Hello, Awesome Swift!!!"
+
+var substr = str.dropLast() //원본 문자열에서 마지막 문자열을 제외한 나머지 모든 문자열을 새로운 문자열로 return한다. 메모리는 원본 문자열을 공유한다
+```
+👉 `Hello,AwesomeSwift!!`<br/><br/>
+
+```swift
+substr = str.dropLast(3)
+```
+👉 `Hello,AwesomeSwift //원본의 메모리를 공유한다(! 3개만 사라진다)`<br/><br/>
+
+*drop 메소드는 closure를 parameter로 받는다*<br/><br/>
+
+```swift
+substr = str.drop(while: { (ch) -> Bool in  //첫 번째 콤마 이전에 있는 모든 문자를 삭제한 다음 남아있는 문자열을 return한다
+    return ch != ","
+})
+substr
+```
+👉 `,AwesomeSwift!!!`

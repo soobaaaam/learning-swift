@@ -1,0 +1,57 @@
+# <for-in Loop><br/>
+
+```swift
+for loopConstant in Range {  //문법 형태
+    statements
+}
+```
+```swift
+for index in 1 ... 5 {
+    print("index")
+}
+```
+👉 `1 2 3 4 5`<br/><br/>
+```swift
+for _ in 1 ... 5 { //for-in 반복문 내부에서 반복 상수를 사용하지 않는다면 _ 문자로 생략한다(= Wildcard Pattern)
+    print("hello")
+}
+```
+```swift
+let power = 10
+var result = 1
+
+for _ in 1 ... power {
+    result *= 2
+}
+
+result
+```
+👉 `1024`<br/><br/>
+
+**짝수만 출력**<br/>
+```swift
+for num in stride(from: 0, to: 10, by: 2) { 
+    print(num)
+}
+```
+👉 `0 2 4 6 8`<br/><br/>
+
+**문자열 배열 열거**<br/>
+```swift
+let list = ["Apple", "Banana", "Orange"]
+for fruit in list {
+    print(fruit)
+}
+```
+👉 `Apple Banana Orange`<br/><br/>
+
+**구구단 출력**<br/>
+
+```swift
+for i in 2 ... 9 {
+    for j in 1 ... 9 {
+        print("\(i)" * \(j) = \(i * j)"
+    }
+}
+```
+

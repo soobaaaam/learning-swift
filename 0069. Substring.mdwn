@@ -1,0 +1,41 @@
+# Substring
+: 하나의 문자열에서 특정 범위에 있는 문자열<br/>
+: 문자열을 처리할 때 메모리를 절약하기 위해 사용<br/>
+: 원본 문자열의 메모리를 공유한다<br/><br/>
+
+```swift
+let str = "Hello, Swift"
+let l = str.lowercased()
+
+var first = str prefix(1) //first의 자료형은 String.SubSequence이다(= substring)
+
+first.insert("!", at: first.endIndex) //substring을 바꾸면 그 때 새로운 메모리가 생성된다
+
+str
+first
+```
+👉 `Hello, Swift`<br/>
+👉 `H!`<br/><br/>
+
+**메모리를 공유하고 있는 변수를 바꿔도 기존 변수에는 영향을 주지 않는다**<br/>
+👉 *Copy-on-Write Optimization*<br/><br/>
+
+```swift
+//Copy-on-Write 최적화를 사용하지 않고 substring을 새로운 메모리로 바로 복사하는 방법
+let newStr = String(str.prefix(1))
+
+let s = str[..<str.index(str.startIndex, offsetBy: 2)]
+```
+👉 `He`<br/><br/>
+
+```swift
+str[str.index(str.startIndex, offsetBy: 2)...]
+```
+👉 `llo, Swift`<br/><br/>
+
+```swift
+let lower = str.index(str.startIndex, offsetBy: 2)
+let upper = str.index(str.startIndex, offsetBy: 5)
+str[lower ... upper]
+```
+👉 `llo`

@@ -1,0 +1,110 @@
+# Function Types
+
+**First-class Citizen의 특징**
+1. 변수나 상수에 저장할 수 있다
+2. parameter로 전달할 수 있다
+3. 함수에서 return할 수 있다<br/><br/>
+
+() 👉 비어있는 tupel ('없다'는 뜻으로 사용) = Void (Swift에서는 Void 대신 ()를 사용한다)<br/><br/>
+
+*(ParameterTypes) -> ReturnType*<br/><br/>
+
+```swift
+func sayHello() {
+    print("Hello, Swift")
+}
+
+let f1 = sayHello //함수를 상수에 저장
+f1()
+```
+👉  `Hello, Swift`<br/><br/>
+
+```swift
+func printHello(with name: String) {
+    print("hello, \(name)")
+}
+
+let f2: (String) -> () = printHello(with:)
+
+let f3 = printHello(with:)
+
+f3("World") //함수를 호출할 때는 반드시 argument label이 필요하지만, 상수에 저장된 함수를 호출할 때는 필요하지 않다
+```
+👉  `hello, World`<br/><br/>
+
+```swift
+func add(a: Int, b: Int) -> Int {
+    return a + b
+}
+
+var f4: (Int, Int) -> Int = add(a:b:)
+
+f4(1, 2)
+```
+👉  `3`<br/><br/>
+
+```swift
+func add(_ a: Int, with b: Int) -> Int {
+    return a + b
+}
+
+f4 = add(_:with:)
+```
+```swift
+func swapNumbers(_ a: inout Int, _ b: inout Int) {
+
+}
+
+let f5 = swapNumbers(_:_:)
+```
+```swift
+func sum(of numbers: Int...) {
+
+}
+let f6 = sum(of:)
+```
+```swift
+func add(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+func subtract(_ a: Int, _ b: Int) -> Int {
+    return a - b
+}
+
+func multiply(_ a: Int, _ b: Int) -> Int {
+    return a * b
+}
+
+func divide(_ a: Int, _ b: Int) -> Int {
+    return a / b
+}
+
+typealias ArithmeticFuntion = (Int, Int) -> Int
+
+func selectFunction(from op: String) -> ArithmeticFunction {
+    ArithmeticFunction? {
+        switch op {
+        case "+":
+            return add(_:_:)
+        case "*"
+            return multiply(_:_:)
+        case "-":
+            return subtract(_:_:)
+        case "/":
+            return divide(_:_:)
+        default:
+            return nil
+        }
+}
+
+let af = selectFunction(from: "+")
+af?(1, 2) //3
+
+selectFunction(from: "*")?(12, 34) //408
+```
+
+
+
+
+

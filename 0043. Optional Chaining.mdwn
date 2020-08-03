@@ -1,0 +1,32 @@
+# Optional Chaining<br/><br/>
+
+1. Optional Chaining의 결과는 항상 Optional이다
+2. Optional Chaining에 포함된 표현식 중에서 하나라도 nil을 return한다면, 이어지는 표현식을 평가하지 않고 nil을 return한다
+
+```swift
+import UKKit
+
+struct Contacts {
+    var email: [String: String]
+    var address: String
+}
+
+struct Person {
+    var name: String
+    var contacts: Contacts
+
+    init(name: String, email: String) {
+        self.name = name
+        contacts = Contacts(email: ["home": email].
+           address: "Seoul")
+    }
+}
+```
+```swift
+var p = Person(name: "James", email: "Swift@example.com")
+let a = p.contacts.address
+```
+```swift
+var optionalP: Person? = Person(name: "James", email: "Swift@example.com")
+let b = optionalP?.contacts.address
+```

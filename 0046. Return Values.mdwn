@@ -1,0 +1,40 @@
+# Return Values
+
+```swift
+func add() -> Int {
+    return 1 + 2
+}
+
+add()
+```
+👉 `3`<br/><br/>
+
+```swift
+func add() -> Int {
+    return 1 + 2
+}
+
+if add() == 3 {
+    print("three")
+}
+```
+👉 three<br/><br/>
+
+**함수에서 return형을 선언했다면 return문을 통해서 반드시 값을 return해야 한다**<br/>
+**함수가 return한 값은 함수가 호출한 부분으로 전달한다**<br/><br/>
+
+```swift
+func doSomething() {
+    let rnd = Int.random(in: 1...10)
+
+    if rnd % 2 == 1 {
+        return
+    }
+
+    print(rnd)
+}
+```
+
+*return의 역할*
+1. 함수의 실행을 중지한다
+2. 함수에 return형이 선언되어있다면 return 다음에 오는 표현식을 평가한 다음에 그 결과를 return한다

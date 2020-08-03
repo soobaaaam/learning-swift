@@ -1,0 +1,30 @@
+# Control Transfer Statements(흐름 제어 구문)
+: 제어 전달문은 조건문과 반복문에서 일반적인 코드의 흐름을 바꾸기 위해 사용된다<br/><br/>
+
+*다섯 가지 제어 전달문이 존재한다*<br/>
+1. fallthrough
+2. throw
+3. return
+4. break
+5. continue<br/>
+
+## Transfer Control(제어를 전달한다)
+: 현재 실행중인 scope에서 코드를 중지하고 다음에 실행할 코드를 바로 실행하는 것<br/><br/>
+
+```swift
+for index in 1...100 {
+    print("start")
+
+    if index < 5 {
+        continue
+    }
+
+    if index > 10 {
+        break
+    }
+
+    print("end")
+}
+```
+**continue는 다음 회차 반복으로 제어를 전달한다**<br/>
+**break는 문장 다음으로 제어를 전달한다**

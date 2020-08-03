@@ -1,0 +1,37 @@
+# Escaping Closure
+
+## Non-Escaping Closure
+```swift
+func performNonEscaping(closure: () -> ()) {
+    print("start")
+    closure()
+    print("end")
+}
+
+performNonEscaping {
+    print("closure")
+}
+```
+👉 `start closure end`<br/><br/>
+
+## Escaping Closure
+
+```swift
+func performEscaping(closure: @escaping () -> ()) {
+    print("start")
+
+    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        closure()
+    }
+
+    print("end")
+}
+
+performEscaping {
+    print("closure")
+}
+```
+👉 `start end (3초 뒤)closure`<br/><br/>
+
+**closure가 capture한 값이 closure 실행이 완료될 때까지 삭제되지 않는다**<br/>
+**그래서 closure의 실행 흐름이 함수의 실행 흐름을 벗어나더라도 메모리 에러없이 정상적으로 실행된다**

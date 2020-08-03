@@ -1,0 +1,71 @@
+# String Basics
+
+```swift
+var str = "Hello,Swift String"
+var emptyStr = "" //빈문자열
+emptyStr = String()
+
+let a = String(true) //문자열 true 이다
+
+let b = String(12) //숫자가 아닌 문자열 12이다
+
+let c = String(str) //같은 값을 가진 새로운 문자열
+
+let hex = String(123, radix: 16) //문자열로 나타낸 16진수 123
+let octal = String(123, radix: 8) //문자열로 나타낸 8진수 123
+let binary = String(123, radix: 2) //문자열로 나타낸 2진수 123
+```
+```swift
+//문자열을 초기화할 때 빈 문자열을 초기화하는 것이 아닌 특정 문자를 원하는 개수만큼 채워서 초기화하는 방법
+let repeatStr = String(repeating: "👏", count: 7)
+```
+👉 `👏👏👏👏👏👏👏`<br/><br/>
+
+```swift
+let e = "\(a) \(b)"
+let f = a + " " + b
+str += "!!"
+```
+👉 `true 12`<br/>
+👉 `true 12`<br/>
+👉 `Hello,Swift String!!`<br/><br/>
+
+```swift
+str.count //문자열의 길이를 확인하는 방법
+str.count == 0 //문자열이 비어있는지 확인하는 방법
+str.isEmpty //문자열이 비어있는지 확인하는 방법
+```
+```swift
+str.lowercased() //문자를 모두 소문자로 변경
+str.uppercased() //문자를 모두 대문자로 변경
+str.capitalized() //각 단어의 첫 번째 문자를 대문자로 변경
+```
+👉 `hello,swift string!!`<br/>
+👉 `HELLO,SWIFT STRING!!`<br/>
+👉 `Hello,Swift String!!`<br/><br/>
+
+```swift
+//character sequence
+for char in "Hello" {
+    print(char)
+}
+```
+👉
+`H`<br/>
+`e`<br/>
+`l`<br/>
+`l`<br/>
+`o`<br/><br/>
+
+```swift
+//문자열을 랜덤으로 출력
+let num = "1234567890"
+num.randomElement()
+```
+👉 `0`(랜덤)<br/><br/>
+
+```swift
+//문자들을 랜덤으로 섞어서 문자열로 출력
+num.shuffled
+```
+👉 `1, 7, 3, 4, 2, 5, 9, 0, 6`(랜덤)

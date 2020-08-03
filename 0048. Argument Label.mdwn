@@ -1,0 +1,20 @@
+# Argument Label
+
+`(name: Type) 👉 name = Parameter Name 이자 동시에 Argument Label`<br/>
+`(label name: Type) 👉 label = Argument Label, name = Parameter Name`<br/><br/>
+
+**Argument Label은 함수 이름의 가독성을 높이기 위해 사용한다**<br/><br/>
+
+```swift
+func sayHello(name: String) {
+    print("Hello, \(name)")
+}
+
+sayHello(to: "Swift")
+
+func sayHello(_ name: String) {
+    print("Hello, \(name)")
+}
+
+sayHello("Swift)
+```

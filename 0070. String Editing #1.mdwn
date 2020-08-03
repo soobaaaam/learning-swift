@@ -1,0 +1,41 @@
+# String Editing #1
+
+## Appending Strings and Characters
+
+```swift
+var str = "Hello"
+str.append(",  ") //append는 대상 문자열을 직접 변경(ing 나 ed로 끝나지 않으면 원본을 변경한다)
+str
+
+let s = str.appending("Swift") //appending은 대상 문자열은 변경하지 않고, argument로 전달한 문자열을 연결한 다음에 새로운 문자열을 return한다. 상수에서 사용할 수 있다.
+str
+s
+s.appending("!!")
+```
+👉 <br/>
+`Hello,`<br/>
+`Hello, Swift`<br/>
+`Hello, Swift!!`<br/><br/>
+
+```swift
+"File size is ".appendingFormat("%.1f, 12.3456)
+```
+👉 `File size is 12.3`<br/><br/>
+
+```swift
+var str = "Hello Swift"
+
+str.insert(",", at: str.index(str.startIndex, offsetBy: 5)
+```
+👉 `Hello,Swift`<br/><br/>
+
+```swift
+var str = "Hello Swift"
+
+if let sIndex = str.firstIndex(of: "S") {
+    str.insert(contentsOf: "Awesome", at: sIndex)
+}
+```
+👉 `Hello,AwesomeSwift`
+
+

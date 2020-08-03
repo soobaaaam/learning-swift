@@ -1,0 +1,11 @@
+# Tuple Decomposition
+
+*let (name1, name2, ...) = tupleExpr*<br/>
+*var (name1, name2, ...) = tupleExpr*<br/>
+
+```swift
+let data = ("<html>", 200, "OK", 12.34)
+
+let (body, code, message, size) = data
+let (body, code, message, _) = data //네 번째 문자를 wildcard pattern으로 생략
+```

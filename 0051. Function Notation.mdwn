@@ -1,0 +1,31 @@
+# Function Notation(함수 표기법)
+
+*functionName(label:)*<br/>
+*functionName(label:label:)*<br/>
+*functionName*<br/><br/>
+
+```swift
+func sayHello() {
+    print("Hello, Swift")
+}
+```
+👉  함수 표기 : sayHello<br/><br/>
+
+```swift
+func sayHello(to name: String) {
+    print("Hello, \(name)")
+}
+```
+👉  함수 표기 : sayHello(to:)<br/><br/>
+
+```swift
+func sayHEllo(_ name: String) {
+    print("Hello, \(name)")
+}
+```
+👉  함수 표기 : sayHello(_:)<br/><br/>
+
+**Function Notation을 알아야 하는 이유**
+1. reference 문서를 이해하기 위해
+2. function type을 이해하기 위해
+

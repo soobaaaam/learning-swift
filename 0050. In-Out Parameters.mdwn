@@ -1,0 +1,32 @@
+# In-Out Parameters(입출력 parameters)
+```swift
+(name: inout Type)
+functionName(argumentLabel: &expression)
+```
+
+```swift
+var num1 = 12
+var num2 = 34
+
+func swapNumber(_ a: inout Int, with b: inout Int) {
+    let tmp = a
+    a = b
+    b = tmp
+}
+
+num1
+num2
+```
+👉  `12`<br/>
+👉  `34`<br/><br/>
+
+```swift
+swapNumber(&num1, with: &num2)
+
+num1
+num2
+```
+👉  `34`<br/>
+👉  `12`<br/><br/>
+
+**inout parameter는 가변 parameter에서 사용할 수 없다**

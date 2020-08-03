@@ -1,0 +1,65 @@
+# Type Property(형식 속성)
+
+1. 형식 자체에 속한 속성.
+2. 인스턴스마다 개별 공간이 생성되지 않고, 모든 인스턴스가 공유하는 하나의 공간만 생성된다.
+3. 그리고 모든 인스턴스가 여기에 저장된 값을 공유한다.
+4. 클래스 ,구조체, 열거형에 모두 추가할 수 있다.
+5. 저장 속성과 계산 속성을 형식 속성으로 선언할 수 있다.(저장 형식 속성, 계산 형식 속성)
+
+## Stored Type Properties
+```swift
+//Syntax
+static var name: Type = DefaultValue //Variable Stored Type Property
+
+static let name: Type = DefaultValue //Constant Stored Type Property
+```
+1. 저장 속성은 인스턴스를 초기화할 때 함께 초기화되지만, 저장 형식 속성은 속성에 최초로 접근할 때 초기화된다.
+2. 형식 속성은 특정 인스턴스에 속한 속성이 아니기 때문에, 인스턴스 이름으로는 접근할 수 없다.
+```swift
+//Example
+class Math {
+    static let pi = 3.14
+}
+
+let m = Math()
+Math.pi //pi는 형식 속성이기 때문에 형식 이름을 통해 접근해야한다
+```
+## Computed Type Properties
+```swift
+//Syntax
+static var name: Type {
+    get {
+        statements
+        return expr
+    }
+    set(name) {
+        statements
+    }
+}
+
+class var name: Type {
+    get {
+        statements
+        return expr
+    }
+    set(name) {
+        statements
+    }
+}
+
+//Example
+enum Weekday: Int {
+    case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
+
+    static var today: Weekday {
+        let cal = Calendar.current
+        let today = Date()
+        let weekday = cal.component(.weekday, from: today)
+        return Weekday(rawValue: weekday)!
+    }
+}
+
+Weekday.today //friday
+```
+
+

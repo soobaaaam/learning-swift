@@ -1,0 +1,81 @@
+# String Interpolation
+
+*\(expr)*<br/><br/>
+
+```swift
+var str = "12.34KB"
+
+let size = 12.34
+str = String(size) + "KB" //동일 코드
+
+str = "\(size)KB" //동일 코드
+```
+**직관적으로 문자열을 구성할 수 있지만 원하는 format을 직접 구성할 수는 없다**
+
+## Format Specifier
+
+*%char*<br/><br/>
+
+```swift
+//소수점 첫 번째 자리까지 출력하는 코드
+str = String(format: "%.1fKB", size)
+```
+👉 `12.3KB`<br/>
+```swift
+String(format: "Hello, %@", "Swift") //문자열과 참조형식을 대체할 때 사용
+```
+👉 `"Hello, Swift"`<br/>
+```swift
+String(format: "%d", 12) //정수를 대체할 때 사용
+```
+👉 `12`<br/>
+```swift
+String(format: "%3f", 12.34) //실수를 대체할 때 사용
+```
+👉 `12.340`<br/>
+```swift
+String(format: "%010.3f", 12.34)
+```
+👉 `000012.340`<br/><br/>
+
+```swift
+String(format: "[%d]", 123)
+String(format: "[%10d]", 123)
+String(format: "[%-10d]]", 123
+```
+👉 `[123]`<br/>
+👉 `[   123]`<br/>
+👉 `[123   ]]`<br/><br/>
+
+```swift
+let firstName = "Yoon-ah"
+let lastName = "Lim"
+
+let korFormat = "그녀의 이름은 %2$@ %1$@ 입니다." //첫 번째 포맷 지정자는 두 번째 parameter와 교체되고 두 번째 포맷 지정자는 첫 번째 parameter와 교체된다
+let engFormat = "Her name is %1$@ %2$@."
+
+String(format: korFormat, firstName, lastName)
+String(format: engFormat, firstName, lastName)
+```
+👉 `그녀의 이름은 Lim Yoon-ah입니다.`<br/>
+👉 `Her name is Yoon-ah Lim.`<br/><br/>
+
+## Escape Sequence(탈출 문자)
+
+: \와 하나의 문자로 구성된 특별한 문자<br/><br/>
+
+```swift
+str = "\\"
+print(str)
+```
+👉 `\`<br/><br/>
+
+```swift
+print("A\tB") //탭 추가
+
+print("C\nD") //줄 바꿈 추가
+```
+```swift
+print("\"Hello\" He said.")
+```
+👉 `"Hello" He said.`

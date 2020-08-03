@@ -1,0 +1,28 @@
+# Overflow Operators<br/><br/>
+
+`Int8.min` 👉 -128<br/>
+`Int8.max` 👉 127<br/?<br/>
+
+`let num: Int8 = Int8.max` 👉 127<br/>
+`let num1: Int8 = Int8.max + 1` 👉 오류(저장할 수 있는 값의 범위를 벗어난다)<br/><br/>
+
+### Overflow Addition Operator<br/>
+*a &+ b*<br/><br/>
+
+`let a: Int8 = Int8.max` 👉 127<br/>
+`let b: Int8 = a &+ 1` 👉 -128 (Int8에 저장될 수 있는 가장 작은 값이 나온다)<br/><br/>
+
+### Overflow Subtraction Operator<br/>
+*a &- b*<br/>
+`let c: Int8 = Int8.min` 👉 -128<br/>
+`let d: Int8 = c &- 1` 👉 127 (Int8에 저장될 수 있는 가장 큰 값이 나온다)<br/><br/>
+
+### Overflow Multiplication Operator<br/>
+*a &* b*<br/>
+`let e: Int8 = Int8.max &* 2` 👉 -2
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+# Optional Binding
+
+```swift
+if let name: Type = OptionalExpression {
+    statements
+}
+```
+```swift
+while let name: Type = OptionalExpression {
+    statements
+}
+```
+```swift
+guard let name: Type = OptionalExpression else {
+    statements
+}
+```
+```swift
+if num != nil {
+    print(num!)
+} else {
+    print("empty")
+}
+```
+👉 `empty`<br/>
+
+```swift
+if let n = num {
+    print(n)
+} else {
+    print("empty")
+}
+```
+👉 `empty`<br/>
+
+```swift
+var str: String? = "str"
+guard let str = str else {
+    fatalError()
+}
+str
+```
+👉 `str`<br/>
+
+```swift
+num = 123
+if var num = num {
+    num = 456
+    print(num)
+}
+```
+👉 `456`<br/>
+
+```swift
+let a: Int? = 12
+let b: String? = "str"
+
+if let num = a, let str = b, str.count > 5 {
+}
+```

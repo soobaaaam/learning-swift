@@ -1,0 +1,27 @@
+# Tuple Matching
+
+```swift
+let resolution = (3840.0, 2060.0)
+
+if resolution.0 == 3840 && resolution.1 == 2160 {
+    print("4K")
+}
+```
+👉 `4k`<br/>
+
+```swift
+let resolution = (1920.0, 1080.0)
+
+switch resolution {
+case let(w, h) where w / h == 16.0 / 9.0 :
+    print("16:9")
+case (_, 1080):
+    print("1080p")
+case (3840...4096, 2160): //interval matching을 조합하는 것도 가능하다
+    print("4K")
+default:
+    break
+}
+```
+👉 `16:9`
+

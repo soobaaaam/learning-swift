@@ -1,0 +1,41 @@
+# Array #2
+
+## Adding Elements
+```swift
+var alphabet = ["A", "B", "C"]
+
+//append는 배열의 끝에만 요소 추가
+alphabet.append("E") //하나의 요소만 추가 가능
+
+alphabet.append(contentsOf: ["f", "G"]) //여러 개의 요소 추가
+
+//insert는 배열 중간에 요소 추가
+alphabet.insert("D", at: 3) //하나의 요소만 추가
+alphabet.insert(contentsOf: ["a", "b", "c"], at: 0) //여러 개의 요소 추가
+
+//요소를 변경
+alphabet[0...2] = ["x", "y", "z"] //a,b,c가 x,y,z로 변경
+
+alphabet.replaceSubrange(0...2, with: ["a", "b", "c"]) //메소드로 범위를 교체할 때는 replaceSubrange를 사용한다
+
+alphabet[0...2] = ["z"] //여러 개의 요소를 하나의 요소인 z로 한 번에 변경도 가능
+
+alphabet[0..<1] = [] //빈 배열을 통해 원하는 범위를 삭제할 수 있다
+```
+## Removing Elements
+```swift
+alphabet = ["A", "B", "C", "D", "E", "F", "G"]
+
+alphabet.remove(at: 2) //C를 삭제
+
+alphabet.removeFirst() //A를 삭제(삭제된 요소도 return해준다)
+
+alphabet.removeFirst(2) //앞의 2개 요소를 삭제(삭제된 요소는 return하지 않는다)
+
+alphabet.removeAll() //배열에 저장된 모든 요소를 삭제
+
+alphabet.popLast() //nil(마지막 요소를 삭제 후 삭제된 요소를 return한다. 배열이 비어있기 때문에 nil을 return한다)
+
+alphabet.removeSubrange(0...2) //특정 범위를 삭제한다
+```
+

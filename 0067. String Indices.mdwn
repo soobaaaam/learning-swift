@@ -1,0 +1,50 @@
+# String Indices
+
+```swift
+let str = "Swift"
+
+//첫 번째 문자 출력
+let firstCh = str[str.startIndex]
+print(firstCh)
+```
+👉 `S`<br/> 
+
+```swift
+let lastCh = str[str.endIndex] //endIndex는 마지막 문자의 다음 index이다(Past the end). String.Index는 정수형이 아니므로 -1을 해주는 것은 불가능하다
+print(lastCh)
+```
+👉 에러<br/>
+```swift
+//마지막 문자 출력
+let lastCharIndex = str.index(before: str.endIndex)
+let lastCh = str[lastCharIndex]
+print(lastCh)
+```
+👉 `t`<br/>
+```swift
+//두 번째 문자 출력
+let secondCharIndex = str.index(after: str.startIndex)
+let secondCh = str[secondCharIndex)
+print(secondCh)
+```
+👉 `w`<br/>
+```swift
+//세 번째 문자 출력
+var thirdCharIndex = str.index(str.startIndex, offsetBy: 2)
+var thirdCh = str[thirdCharIndex]
+print(thirdCh)
+```
+👉 `i`<br/>
+```swift
+//세 번째 문자 출력(다른 방법)
+thirdCharIndex = str.index(str.endIndex, offsetBy: -3)
+thirdCh = str[thirdCharIndex]
+print(thirdCh)
+```
+👉 `i`<br/>
+```swift
+//코드를 작성할 때 index의 유효성을 확신할 수 없다면 if문으로 확인한다
+if thirdCharIndex < str.endIndex && thirdCharIndex >= str.startIndex {
+
+}
+```

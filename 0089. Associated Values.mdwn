@@ -1,0 +1,42 @@
+# Associated Values(연관값)
+
+## Syntax
+```swift
+enum TypeName {
+    case caseName(Type)
+    case caseName(Type, Type, ...)
+}
+```
+## Example
+```swift
+//원시값으로 구현
+enum VideoInterface: String {
+    case dvi = "1028x768"
+    case hdmi = "2048x1536"
+    case displayPort = "3840x2160"
+}
+
+//연관값으로 구현
+enum VideoInterface {
+    case dvi(width: Int, height: Int)
+    case hdmi(Int, Int, Double, Bool)
+    case displayPort(CGSize)
+}
+
+var input = VideoInterface.dvi(width: 2048, height: 1536)
+
+switch input {
+case .dvi(2048, 1536):
+    print("dvi 2048 x 1536")
+case .dvi(2048, _): //너비만 매칭 시킬 때
+    print("dvi 2048 x Any")
+case .dvi: //연관값은 무시하고 case만 매칭 시킬 때
+    print("dvi")
+case .hdmi(let width, let height, var version, var audioEnabled): //연관값을 상수로 바인딩
+    print("hdmi \(width)x\(height)")
+case let .displayPort(size): //모든 연관값을 동일한 값으로 바인딩
+    print("dp")
+}
+
+input = .hdmi(3840, 2160, 2.1, true)
+```

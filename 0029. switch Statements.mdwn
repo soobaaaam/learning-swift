@@ -1,0 +1,116 @@
+# <switch Statements>
+: 값의 일치 여부에 따라서 실행할 코드를 결정한다 👉 pattern matching 이나 value matching을 구현할 때 자주 사용한다<br/>
+```swift
+switch valueExpression {
+case pattern:
+    statements
+cas pattern, pattern:
+    statements
+default:
+    statements
+}
+```
+**case block은 생략할 수 없으며 반드시 하나 이상을 작성해야한다**<br/>
+**모든 block은 반드시 한 줄 이상의 코드가 포함되어야한다**<br/><br/>
+
+```swift
+let num = 1
+
+switch num {
+case 1:
+    print("one")
+case 2, 3: 
+    print("two or three")
+default:
+    print("others")
+}
+```
+👉 `one`<br/><br/>
+
+### pattern에 조건을 추가하는 문법<br/>
+```swift
+switch valueExpression {
+case pattern where condition:
+    statements
+default:
+    statements
+}
+```
+
+```swift
+switch num {
+case let n where n <= 10:
+    print(n)
+default:
+    print("others")
+}
+```
+
+### Interval Matching
+```swift
+let temperature = -8
+
+switch temperature {
+case ..<10:
+    print("Cold")
+case 11...20:
+    print("Cool")
+case 21...27:
+    print("Warm")
+case 28... :
+    print("Hot")
+default:
+    break
+}
+```
+👉 `Cold`<br/><br/>
+
+### Fall Through
+```swift
+let num = 2
+
+switch num {
+case 1:
+    print("one")
+case 2: 
+    print("two")
+    fallthrough
+case 3:
+    print("three")
+default:
+    break
+}
+```
+👉 `two three`<br/><br/>
+
+**swift에서는 fall through를 허용하지 않는다**<br/>
+**원하는 위치에서 fall through 명령어를 사용해야한다**<br/><br/>
+
+```swift
+let attempts = 10
+
+switch attempts {
+case ..<10:
+    print("warning")
+case 10:
+    print("warning")
+    print("reset")
+default:
+    print("reset")
+```
+👉 `warning`
+`reset`
+```swift
+    switch attempts {
+case ..<10:
+    print("warning")
+case 10:
+    print("warning")
+    fallthrough
+default:
+    print("reset")
+```    
+👉 `warning`
+`reset`
+
+**결과는 동일하지만 code 중복을 줄일 수 있다**

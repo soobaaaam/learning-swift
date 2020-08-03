@@ -1,0 +1,54 @@
+# Closure Syntax Optimizaion (클로저 문법 최적화)
+
+```swift
+var proModels = products.filter({ (name: String) -> Bool in
+   return name.contains("Pro")
+})
+
+
+products.filter { 
+   $0.contains("Pro")
+}
+
+proModels.sort{ 
+   $0.caseInsensitiveCompare($1) == .orderedAscending //문법 최적화
+}
+```
+## Closure Syntax Optimization 과정
+1. parameter형식과 return형을 생략한다
+2. parameter이름을 생략하고 short end argument이름으로 대체한다
+3. closure에 포함된 코드가 단일 return문이라면, return 키워드를 생략한다(implicit return)
+4. closure가 마지막 parameter라면 trailing closure로 작성한다
+5. 괄호 사이에 parameter가 더이상 없다면 괄호를 생략한다
+
+**5번부터 반대로**<br/>
+5.<br/>
+```swift
+proModels.sort() { 
+   $0.caseInsensitiveCompare($1) == .orderedAscending
+}
+```
+4.<br/>
+```swift
+proModels.sort(by: { 
+   $0.caseInsensitiveCompare($1) == .orderedAscending
+}) 
+```
+3.<br/>
+```swift
+proModels.sort(by: { 
+   return $0.caseInsensitiveCompare($1) == .orderedAscending
+}) 
+```
+2.<br/>
+```swift
+proModels.sort(by: { (lhs, rhs) in
+   return lhs.caseInsensitiveCompare(rhs) == .orderedAscending
+}) 
+```
+1.<br/>
+```swift
+proModels.sort(by: { (lhs: String, rhs: String) -> Bool in
+   return lhs.caseInsensitiveCompare(rhs) == .orderedAscending
+}) 
+```

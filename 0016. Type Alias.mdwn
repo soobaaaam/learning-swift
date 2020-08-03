@@ -1,0 +1,16 @@
+# <Type Alias><br/>
+: 기본 자료형에 새로운 이름을 추가하는 문법<br/>
+*typealias NewName = TypeName*<br/><br/>
+
+ex) typealias Coordinate = Double 👉 새로운 자료형을 만드는 것이 아닌 별명을 만드는 것!!<br/><br/>
+
+```swift
+let lat: Double = 12.34
+let lon: Double = 56.78
+```
+👉<br/>
+```swift
+let lat: Coordinate = 12.34
+let lon: Coordinate = 56.78
+```
+👉위 예제를 보면 type alias를 사용하여 좌표를 저장하는 상수라는 것을 명확히 알 수 있다

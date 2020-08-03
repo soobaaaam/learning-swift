@@ -1,0 +1,25 @@
+# Dictionary #2
+
+## Adding Keys and Values
+```swift
+var words = [String: String]()
+
+words["A"] = "Apple"
+words["B"] = "Banana"
+
+words["B"] = "Ball" //이미 B가 존재하기 때문에 기존의 B가 교체된다
+
+words.updateValue("City", forKey: "C") //nil을 리턴하며 새로운 요소인 C가 추가된다
+
+words.updateValue("Circle", forKey: "C") //City(이전에 저장되어 있던 C의 값인 City가 리턴되며 C는 Circle로 교체된다)
+```
+## Removing Keys and Values
+```swift
+words["B"] = nil //B 요소가 삭제된다
+
+words["Z"] = nil //nil(존재하지 않는 key를 삭제하면 그냥 다음 코드를 실행한다)
+
+words.removeValue(forKey: "A") //Apple(A의 key를 삭제 후 삭제된 값을 리턴한다)
+
+words.removeAll() //전체 요소 삭제
+```

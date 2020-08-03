@@ -1,0 +1,45 @@
+# Closures
+: self-contained code blocks<br/><br/>
+
+```swift
+{ (parameters) -> ReturnType in
+   statements
+}
+```
+```swift
+{ statements }
+```
+
+**Named Closures : Function, Nested Function**<br/>
+**Unnamed Closures : Anonymous Function**<br/>
+👉 함수와 클로저는 서로 호환된다<br/><br/>
+
+```swift
+let c = { print("Hello, Swift") } // 가장 간단한 클로저
+c()
+```
+
+👉 `Hello, Swift`<br/><br/>
+
+```swift
+let c2 = { (str: String) -> String in 
+   return "Hello, \(str)"
+}
+```
+👉 클로저에서는 argument label을 사용하지 않는다(str은 parameter 이름이다)<br/><br/>
+
+```swift
+typealias SimpleStringClosure = (String) -> String
+
+func perform(closure: SimpleStringClosure) {
+    print(closure("iOS"))
+}
+
+perform(closure: c2)
+
+perform(closure: { (str: String) -> String in 
+   return "Hi, \(str)"  //inline closure
+})
+```
+👉 `Hello, iOS`<br/>
+👉 `Hi, iOS`

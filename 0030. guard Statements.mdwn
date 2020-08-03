@@ -1,0 +1,64 @@
+# <guard Statements>
+```swift
+guard condition else {
+    statements
+}
+
+guard optionalBinding else {
+    statements
+}
+```
+### guard statment 특징<br/>
+**else block 생략 불가능**<br/>
+**condition이 false로 평가받았을 때 else block이 실행된다**<br/>
+**guard문 내부에서는 반드시 코드의 실행을 중지해야한다**<br/><br/>
+
+```swift
+func validate(id: String?) -> Bool {
+    guard let id = id else {
+        return false
+    }
+
+    guard id.count >= 6 else {
+        return false
+    }
+
+    guard let id2 = id2, id2.count>=6 else{
+        return false
+    } //하나의 guard문으로 확인하는 것도 가능하다
+
+    return true 
+}
+
+validate(id: nil)
+validate(id: "abc")
+validate(id: "swiftlang")
+```
+👉 `false`<br/>
+👉 `false`<br/>
+👉 `true`<br/><br/>
+
+```swift
+//if문
+func validateUsingIf() {
+    var id: String? = nil
+
+    if let str = id {
+        if str.count >= 6 {
+            print(str)
+        }
+    }
+}
+```
+```swift
+//guard문
+func validateUsingGuard() {
+    var id: String? = nil
+
+    guard let str = id else { return }
+    guard str.count >= 6 else { return }
+
+    print(str)
+```
+**guard문은 조건의 수가 늘어나더라도 코드의 중첩이 발생하지 않는다. 그래서 if문으로 작성한 코드의 가독성이 떨어질 때 guard문으로 바꾸면 가독성이 높아진다**<br/>
+**if문과 guard문을 선택하는 규칙은 따로 없다**

@@ -1,0 +1,40 @@
+# <Custom Operators(사용자 정의 연산자)><br/><br/>
+
+*prefix operator operator*<br/>
+*postfix operator operator*<br/>
+*infix operator operator*<br/><br/>
+
+**Custom Operator 규칙**<br/>
+1. 연산자를 가능한 단순한 형태로 선언해야한다
+2. 기존에 있는 연산자와 함께 선언했을때 모호함이 없도록 선언해야한다<br/><br/>
+
+```swift
+prefix operator +++
+
+extension Int {
+    static prefix func +++(num: inout Int) {
+        num += 2
+    }
+}
+
+var a = 1 
++++a
+a
+```
+👉 3<br/><br/>
+
+```swift
+infix operator *+*
+
+extension Int {
+    static func *+*(left: Int, right: Int) -> Int {
+        return (left * right) + (left * right)
+    }
+}
+
+1 *+* 2
+```
+👉 4
+
+
+

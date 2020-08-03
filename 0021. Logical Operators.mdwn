@@ -1,0 +1,27 @@
+# Logical Operators (논리 연산자)<br/><br/>
+
+### Logical NOT Operators<br/>
+*!a*<br/><br/>
+
+`true` 👉 true<br/>
+`!true` 👉 false<br/><br/>
+
+```swift
+let a = 12
+let b = 34
+```
+
+`a < b` 👉 true<br/>
+`!(a < b)` 👉 false<br/><br/>
+
+### Logical AND Operators<br/>
+*a && b*<br/><br/>
+
+`a > 30 && b % 2 == 0` 👉 false (모두 true이어야 true)<br/><br/>
+
+### Logical OR Operators<br/>
+*a || b*<br/><br/>
+
+`a > 30 || b % 2 == 0` 👉 true (하나만 true여도 true)
+
+

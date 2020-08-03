@@ -1,0 +1,29 @@
+# Capturing Values
+```swift
+var num = 0
+let c = { print("check point #1: \(num)")}
+c()
+
+num += 1
+print("check point #2: \(num)")
+```
+👉 `check point #1: 0`<br/> 
+👉 `check point #2: 1`<br/><br/>
+
+```swift
+var num = 0
+let c = { 
+    num += 1
+    print("check point #1: \(num)")
+}
+c()
+
+print("check point #2: \(num)")
+```
+👉 `check point #1: 1`<br/>
+👉 `check point #2: 1`<br/><br/>
+
+### 특징<br/>
+1. swift에서는 참조를 capture한다
+2. closure 내부에서 외부에 있는 값에 접근하면 값에 대한 참조를 획득한다
+3. closure 내부에서 값을 바꾼다면 외부에 있는 원래 값도 함께 바뀐다

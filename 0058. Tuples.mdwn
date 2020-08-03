@@ -1,0 +1,34 @@
+# Tuples
+
+*(expr1, expr2, ...)* 👉 expr1 : Tuple Member<br/><br/>
+
+`let i = 12, 34` 👉 error<br/>
+`let i = (12, 34)` 👉 Tuple<br/><br/>
+
+```let data = ("<html>", 200, "OK", 12.34)```<br/><br/>
+
+👉 data의 자료형 : (String, Int, String, Double) data<br/><br/>
+
+**Tuple에 저장되는 member의 수는 tuple을 만들 때 결정되고, 이후에는 변경 불가능**<br/>
+**member의 값을 변경하는 것은 가능**<br/><br/>
+
+## Explicit Member Expression
+: Tuple Member에 접근하는 방법<br/><br/>
+
+*tuple.n*  👉 n : 0-based Index<br/><br/>
+
+```swift
+data.0
+data.1
+data.2
+data.3
+```
+👉 `<html> 200 "OK" 12.34`<br/><br/>
+
+```swift
+var mutableTuple = data //var로 선언하면 mutable tuple(가변 튜플)이 된다
+mutableTuple.1 = 404 //unnamed tuple(가독성이 좋지 못함)
+mutableTuple.1
+```
+👉 `404`
+

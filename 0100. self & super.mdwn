@@ -1,0 +1,58 @@
+# self & super
+
+## self
+
+1. 우리가 직접 선언하는 것이 아니라 인스턴스에 자동으로 추가된다.
+2. 인스턴스 멤버 내부에서 접근하면 해당 인스턴스에 접근한다.
+3. 타입 멤버 내부에서 접근하면 형식 자체에 접근한다.
+```swift
+//Syntax
+self
+self.propertyName
+self.method() 
+self[index] //서브스크립트를 호출할 때 사용
+self.init(parameters) //동일한 형식에 있는 다른 생성자를 호출할 때 사용
+
+//Example
+class Size {
+    var width = 0.0
+    var height = 0.0
+
+    func calcArea() -> Double {
+        return self.width * self.height //대부분 self를 생략한다
+    }
+
+    var area: Double {
+        return self.calcArea() //대부분 self를 생략한다
+    }
+
+    func update(width: Double, height: Double) {
+        self.width = width //self를 통해 속성과 파라미터를 구분짓는다
+        self.height = height
+    }
+
+    func doSomething() {
+        let c = { self.width * self.height } //클로저에서 인스턴스 멤버에 접근하려면 self를 캡쳐해야한다
+    }
+
+    static let unit = ""
+
+    static func doSomething() {
+        self.width //오류(형식 메소드에서 인스턴스 속성에 직접 접근하는 것은 불가능하다)
+        self.unit //둘다 타입 멤버이기 때문에 self로 접근 가능하다
+    }
+}
+```
+1. self는 현재 인스턴스에 접근하기 위해 사용하는 특별한 속성이다.
+2. self를 타입 멤버에서 사용하면 인스턴스가 아닌 형식 자체를 나타낸다.
+
+# super
+
+1. super는 상속과 관련 있기 때문에 클래스에서만 사용한다.
+```swift
+//Syntax
+super.propertyName
+super.method()
+super[index]
+super.init(parameters)
+```

@@ -1,0 +1,67 @@
+# Enumeration Case Pattern
+
+## Syntax
+```swift
+case Enum.case(let name):
+case Enum.case(var name):
+
+case let Enum.case(name):
+case var Enum.case(name):
+//주로 Enum 을 생략하고 사용한다
+```
+## Example
+```swift
+enum Transportation {
+    case bus(number: Int)
+    case taxi(company: String, number: String)
+    case subway(lineNumber: Int, express: Bool)
+}
+
+var tpt = Transportation.bus(number: 7)
+
+switch tpt {
+case .bus(let n):
+    print(n)
+case .taxi(let c, var n): //두 번째 값이 없다면 와일드카드 패턴으로 생략한다
+    print(c, n)
+case let . subway(l, e):
+    print(l, e)
+}
+
+tpt = Transportation.subway(lineNumber: 2, express: false)
+
+//2호선인지 먼저 확인 후 급행 여부에 따라 코드를 분기하는 코드
+if case let .subway(2, express) = tpt {
+    if express {
+
+    } else {
+
+    }
+}
+
+//호선과 관계없이 급행 여부만 확인하는 코드
+if case .subway(_, true) = tpt {
+    print("express")
+}
+
+let list = [
+    Transportation.subway(lineNumber: 2, express: false),
+    Transportation.bus(number: 4412),
+    Transportation.subway(lineNumber: 7, express: true),
+    Transportation.taxi(company: "SeoulTaxi", number: "1234")
+]
+
+for case let .subway(n, _) in list {
+    print("subway \(n)")
+}
+
+//급행 지하철만 열거하는 코드
+for case let .subway(n, true) in list {
+    print("subway \(n)")
+}
+
+//부가적인 조건을 추가하는 코드
+for case let .subway(n, true) in list where n == 2 {
+    print("subway \(n)")
+}
+```

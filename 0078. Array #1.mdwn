@@ -1,0 +1,61 @@
+# Array #1
+
+1. 항상 저장된 순서대로 정렬되어있다.
+2. 배열에 저장되는 데이터의 자료형은 반드시 동일해야한다.
+3. 배열의 자료형은 배열을 생성하는 시점의 요소(element)의 자료형을 통해 결정된다.
+4. 배열에 저장되는 개별 요소의 값은 다른 요소의 값과 같을 수 있다.
+5. 요소에 접근할 때는 인덱스(index)를 사용한다. 👉 0-based index
+6. 중간에 있는 요소가 삭제되면 요소의 인덱스는 다시 순서대로 업데이트된다.
+
+
+### Array literal : *[elem, elem, ...]*
+```swift
+let nums = [1, 2, 3]
+```
+### Array Type : *Array\<T> or [T]*
+```swift
+let strArray: Array<String> //정식 문법
+let strArray2: [String] //단축 문법
+```
+### Array Basics
+```swift
+let nums = [1, 2, 3]
+
+let emptyArray: [Int] = [] //빈 literal을 사용할 때는 형식 추론은 사용할 수 없고, 자료형을 직접 지정해야한다.
+
+let emptyArray2 = Array<Int>() //정식 문법
+let emptyArray3 = [Int]() //단축 문법
+
+let zeroArray = [Int](repeating: 0, count: 10) //0이 10개가 채워진 Int 배열
+```
+### Inspecting an Array
+```swift
+nums.count //3
+
+//배열이 비어있는지 확인
+nums.count == 0 //false
+nums.isEmpty //false
+emptyArray.isEmpty //true
+```
+### Accessing Elements
+```swift
+let fruits = ["Apple", "Banana", "Melon"]
+
+fruits[0] //Apple
+fruits[2] //Melon
+fruits[0...1] //Apple Banana
+
+//속성으로 제공되는 index를 사용하는 것이 더 안전하다
+fruits[fruits.startIndex] //Apple
+fruits[fruits.endIndex] //에러(endIndex의 이전 index가 마지막 index이다)
+fruits[fruits.index(before: fruits.endIndex)] //Melon
+
+//배열의 첫 번째나 마지막 요소에 접근하는 것이라면 속성을 사용하는 것이 가능하다
+fruits.first //Apple
+fruits.last //Melon
+
+emptyArray.first //nil
+emptyArray.last //nil
+
+emptyArray[0] //에러
+```

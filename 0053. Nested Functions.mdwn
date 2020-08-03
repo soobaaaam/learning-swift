@@ -1,0 +1,43 @@
+# Nested Functions(내포된 함수)
+
+```swift
+func outer() {
+    print("outer")
+}
+
+func inner() {
+    print("inner")
+}
+```
+👉  global scope에서 선언되었기 때문에 Nested Function이 아님<br/><br/>
+
+```swift
+func outer() {
+    func inner() {
+        print("inner")
+    }
+
+    print("outer")
+}
+```
+👉  inner 함수는 Nested Function이다<br/><br/>
+
+`inner()` 👉  오류 <br/><br/>
+
+**호출할 수 있는 범위가 달라진다**<br/><br/>
+
+```swift
+func outer() -> () -> () {
+    func inner() {
+        print("inner")
+    }
+
+    print("outer")
+
+    return inner
+}
+
+let f = outer()
+f()
+```
+👉   `inner` //inner함수가 정상적으로 호출되도록 outer함수를 호출한 scope로 확장되었다(return된 함수를 통해서 간접적으로 호출되도록 scope를 확장한 것이다)

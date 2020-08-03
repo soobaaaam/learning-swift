@@ -1,0 +1,28 @@
+# Raw Strings
+
+```swift
+var str = "\"Hello\", Swift 5"
+var rawStr = #""Hello", Swift 5"#
+
+print("== str ======")
+print(str)
+
+print("== raw str ======")
+print(rawStr)
+```
+👉 `==str ======`<br/>
+👉 `"Hello", Swift 5`<br/>
+👉 `== raw str ======`<br/>
+👉 `"Hello", Swift 5`<br/><br/>
+
+```swift
+str = "Lorem\nIpsum" //동일 코드
+rawStr = #"Lorem\#nIpsum"# //동일 코드
+
+print(str)
+print(rawStr)
+```
+👉 `Lorem`<br/>
+👉 `Ipsum`<br/>
+👉 `Lorem`<br/>
+👉 `Ipsum`<br/>

@@ -1,0 +1,38 @@
+# Value Types vs Reference Types
+
+Swift에서,<br/>
+*Value Type : Structure, Enumeration, Tuple*<br/>
+*Reference Type : Class, Closure*<br/>
+```swift
+struct PositionValue {
+    var x = 0.0
+    var y = 0.0
+}
+
+class PositionObject {
+    var x = 0.0
+    var y = 0.0
+}
+
+//기본 생성자 만들기
+var v = PositionValue()
+var o = PositionObject()
+
+//새로운 변수를 선언 후 v와 o에 저장되어 있는 값으로 초기화
+var v2 = v
+var o2 = o
+
+v2.x = 12
+v2.y = 34
+
+//값 형식
+v //x 0 y 0(v2에 저장되어 있는 값은 v와 같은 값을 가진 복사본이므로, v2에서 속성을 바꿔도 v에는 변화가 없다)
+v2 //x 12 y 34
+
+o2.x = 12
+o2.y = 34
+
+//참조 형식
+o //x 12 y 34(클래스는 새로운 복사본을 생성하지 않고, 원본을 전달한다)
+o2 // x 12 y 34
+```

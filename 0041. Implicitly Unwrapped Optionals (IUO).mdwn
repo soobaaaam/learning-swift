@@ -1,0 +1,25 @@
+# Implicitly Unwrapped Optionals
+
+*Type!*<br/><br/>
+
+```swift
+let num: Int! = 12
+
+let a = num //a는 optional Int
+let b: Int = num //b는 Int
+```
+```swift
+let num: Int! = nil
+
+let a = num 
+let b: Int 
+```
+👉 error<br/><br/>
+
+**IUO는 처리할 자료형(non optional type)을 직접 지정하면 자동으로 unwrapping 된다**<br/><br/>
+
+*iOS 앱을 만들 때 IUO를 만나는 경우*<br/>
+1. outlet을 연결할 때
+2. api에서 IUO를 리턴할 때
+👉 두 가지 경우 모두 optional로 처리하면 된다. 즉, crash가 발생하지 않도록 optional binding이나 optional chaining으로 처리하면 된다.
+

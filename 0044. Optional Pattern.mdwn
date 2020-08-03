@@ -1,0 +1,51 @@
+# Optional Pattern
+
+`let a: Int? = 0`<br/>
+
+`let b: Optional<Int> = 0' 👉 이론적인 형태 <br/><br/>
+
+```swift
+if a == nil {
+
+}//두 번째 if문을 단축한 형태
+```
+```swift
+if a == .none {
+
+}
+```
+```swift
+if a == 0 {
+
+}//두 번째 if문을 단축한 형태
+```
+```swift
+if a == .some(0) {
+
+}
+```
+```swift
+if let x = a {
+    print(x)
+}
+
+if case .some(let x) = a {
+    print(x)
+}
+
+if case let x? = a {
+    print(x)
+} //Optional Pattern형태
+```
+```swift
+let list: [Int?] = [0, nil, nil, 3, nil, 5]
+
+for item in list {
+    guard let x = item else { continue }
+    print(x)
+} //Optional Binding 형태
+
+for case let x? in list {
+    print(x)
+} //Optional Pattern 형태 (코드가 단순해진다)
+```

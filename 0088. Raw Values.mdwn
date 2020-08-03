@@ -1,0 +1,51 @@
+# Raw Values(원시값)
+
+## Syntax
+```swift
+enum TypeName: RawValueType { //RawValueType은 String, Character, Number Types으로 제한된다
+    case caseName = Value
+}
+```
+## Example
+```swift
+enum Alignment: Int {
+    case left
+    case right = 100
+    case center
+}
+
+Alignment.left.rawValue //0
+Alignment.right.rawValue //100
+Alignmnet.center.rawValue //101(원시값을 직접 지정하지 않으면 자동으로 값이 저장되는데, 기존 값은 항상 이전 값이다
+
+Alignment.left.rawValue = 10 //오류(선언 이후 원시값을 바꾸는 것은 불가능
+
+Alignment(rawValue: 0) //left
+Alignment(rawValue: 200) //nil(생성자의 리턴형은 optional이다
+
+
+
+//요일을 열거형으로 선언하고, 원시값을 string으로 선언
+enum Weekday: String {
+    case sunday
+    case monday = "MON" //원시값을 직접 저장하는 것이 가능
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+}
+
+Weekday.sunday.rawValue //sunday(원시값의 자료형을 문자열로 선언하고 원시값을 생략하면, case 이름과 동일한 문자열이 원시값으로 저장된다
+
+Weekday.monday.rawValue //MON
+
+
+
+//원시값의 형식을 character로 선언
+enum ControlChar: Character {
+    case tab = "\t"
+    case newLine = "\n"
+}
+```
+

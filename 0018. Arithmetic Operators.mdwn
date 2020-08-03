@@ -1,0 +1,58 @@
+# Arithmetic Operator(산술 연산자)<br/><br/>
+
+```swift
+let a = 12
+let b = 34
+```
+
+### Unary Plus Operator<br/><br/>
+
+`+a` 👉 a<br/>
+`+b` 👉 b<br/><br>
+
+### Addition Operator<br/><br/>
+
+`a + b` 👉 46<br/><br/>
+
+### Unary Minus Operator<br/><br/>
+
+`-a` 👉 -12<br/>
+`-b` 👉 -34<br/><br/>
+
+### Subtracion Operator<br/><br/>
+
+`a - b` 👉 -12<br/><br/>
+
+### Multiplication Operator<br/><br/>
+
+`a * b` 👉 408<br/><br/>
+
+### Division Operator<br/><br/>
+
+`a / b` 👉 0<br/>
+`b / a` 👉 2<br/><br/>
+
+```swift
+let c = Double(a)
+let d = Double(b)
+```
+👉
+```swift
+a / b -> 0.35...
+b / a -> 2.83...
+```
+<br/>
+
+### Remainder Operator (Modulo Operator)<br/><br/>
+
+`a % b` 👉 12<br/>
+`c % d` 👉 오류 (Remainder Operator는 정수만 지원한다)<br/>
+따라서 `c.truncatingRemainder(dividingBy: d)`로 작성한다 👉 12<br/><br/>
+
+### Overflow<br/><br/>
+
+`let num: Int8 = 9 * 9` 👉 81<br/>
+`let num2: Int8 = 9 * 9 * 9` 👉 오류(자료형의 값에 저장할 수 있는 값의 범위를 벗어나면 오류 발생)<br/>
+`let num3: Int = 9 * 9 * 9` 👉 729<br/><br/>
+
+: 최종 값을 예측할 수 없는 경우에는 작은 자료형을 지정하지 말고 가능한 큰 자료형을 지정하는 것이 좋다
