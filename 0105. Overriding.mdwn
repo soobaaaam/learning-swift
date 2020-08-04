@@ -1,0 +1,57 @@
+# Overriding
+
+1. 상속 받은 멤버가 서브클래스에 적합하다면 그대로 사용한다.
+2. 하지만 상속 받은 멤버를 서브클래스 구현에 맞게 변경하는 것이 가능하다. 이를 overriding, 즉 '재정의'라고 한다.
+3. overriding이 가능한 대상은 method, property, subcript, initializer 이다.
+
+## Example
+```swift
+class Figure {
+    var name = "Unknown"
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Circle: Figure {
+    var radius = 0.0
+
+    var diameter: Double {
+        return radius * 2
+    }
+
+//draw method를 오버라이딩하는 코드
+    override func draw() {
+        super.draw() //Figure에 있는 draw 메소드가 먼저 실행된 다음, 오버라이딩한 메소드에 있는 코드가 실행된다. 상위 기반으로 구현할 때는 이런 패턴을 사용한다
+        print("😀)")
+    }
+}
+
+let c = Circle(name: "Circle")
+c.draw() //이제는 상속받은 메소드가 아닌 오버라이딩 된 메소드가 출력된다
+
+//속성을 오버라이딩하는 코드 (읽기, 쓰기가 모두 허용되어야한다)
+class Oval: Circle {
+    override var diameter: Double {
+        get {
+            return super.diameter
+        }
+        set {
+            super.radius = newValue / 2
+        }
+    }
+    override var radius: Double {
+       willSet {
+           print(newValue)
+        }
+        didSet {
+            print(oldValue)
+        }
+    }
+}
+```
