@@ -1,0 +1,54 @@
+# Initializers (생성자)
+
+1. Enumeration, Structure, Class 같은 설계도를 기반으로 생성한 것을 인스턴스라 한다.
+2. 새로운 인스턴스를 생성하는 것을 '초기화'라고 한다.
+3. 인스턴스의 초기화를 담당하는 것이 생성자이다.
+4. 초기화의 목적은, 모든 속성을 기본값으로 초기화해서 인스턴스를 기본 상태로 만드는 것이다.
+5. 인스턴스가 정상적으로 초기화되었다는 것은, 생성자의 실행이 완료되었을 때, 모든 속성이 기본값을 가지고 있다는 뜻이다.
+
+## Default Initializer(기본 생성자)
+```swift
+//새로운 인스턴스가 생성되는 시점에 자동으로 기본값이 저장된다
+class Position {
+    var x = 0.0 
+    var y: 0.0 
+    var z: Double? = nil //속성을 옵셔널로 지정
+}
+```
+👉 모든 속성이 기본 값을 가지고 있고 생성자를 직접 구현하지 않는다면, 기본 생성자가 자동으로 제공된다.
+
+## Initializer Syntax
+```swift
+init(parameters) {
+    initialization
+}
+```
+```swift
+TypeName(parameters) //생성자 호출 문법
+```
+```swift
+class SizeObj {
+    var width = 0.0
+    var height = 0.0
+
+    init(width: Double, height: Double) {
+        self.width = width
+        self.height = height
+    }
+
+//convenience initializer
+    convenience init(value: Double) {
+        self.init(width: Double, height: value)
+    }
+}
+```
+## Memberwise Initializer
+```swift
+struct SizeValue {
+    var width = 0.0
+    var height = 0.0
+}
+
+let s = SizeValue()
+SizeValue(width: 1.2, height: 3.4)
+```

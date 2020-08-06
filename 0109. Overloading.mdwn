@@ -1,0 +1,58 @@
+# Overloading
+
+: 하나의 형식에서 동일한 이름을 가진 다수의 멤버를 구현할 때 사용한다<br/><br/>
+
+*오버로딩의 규칙*
+1. 함수 이름이 동일하면 파라미터 수로 식별한다.
+2. 함수 이름, 파라미터 수가 동일하면 파라미터 자료형으로 식별한다.
+3. 함수 이름, 파라미터가 동일하면 Argument Label로 식별한다.
+4. 함수 이름, 파라미터, Argument Label이 동일하면 리턴형으로 식별한다.
+```swift
+//이름이 같아도 파라미터 형식만 다르면 문제없이 식별된다
+func process(value: Int) {
+    print("process Int")
+}
+
+func process(value: String) {
+    print("process String")
+}
+
+func process(value: String, anotherValue: String) {
+
+}
+
+func process(_ value: String) {
+
+}
+
+process(value: 0) //process Int
+process(value: "str") //process String
+
+process(value: "str") //세 번째 함수가 호출된다
+process("str") //네 번째 함수가 호출된다
+
+func process(value: Double) -> Int {
+    return Int(value)
+}
+
+func process(value: Double) -> String? {
+    return String(value)
+}
+
+process(value: 12.34) //에러(어떤 함수를 호출해야할지 모호하기 때문)
+let result: Int = process(value: 12.34) //첫 번째 함수가 호출된다
+
+struct Rectangle {
+    func area() -> Double {
+        return 0.0
+    }
+
+    static func area() -> Double {
+        return 0.0
+    }
+}
+
+let r = Rectangle()
+r.area()
+Rectangle.area()
+```

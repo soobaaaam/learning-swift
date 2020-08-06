@@ -1,0 +1,107 @@
+# Type Casting
+
+1. 인스턴스 형식을 확인하거나 다른 형식으로 인스턴스를 처리할 때 사용한다.
+2. 다운캐스팅에도 사용된다. 
+
+## Type Check Operator
+
+`expression is Type`
+```swift
+let num = 123
+
+num is Int //true
+num is Double //false
+num is String //false
+```
+```swift
+class Figure {
+    let name: String
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Triangle: Figure {
+    override func draw() {
+        super.draw()
+        print("🔺")
+    }
+}
+
+class Rectangle: Figure {
+    var width = 0.0
+    var height = 0.0
+
+    override func draw() {
+        super.draw()
+        print("⬛️ \(width) x \(height)")
+    }
+}
+
+class Square: Rectangle {
+
+}
+
+class Circle: Figure {
+    var radius = 0.0
+
+    override func draw() {
+        super.draw()
+        print("🔴")
+    }
+}
+
+let t = Triangle(name: "Triangle")
+let r = Rectangle(name: "Rect")
+let s = Square(name: "Square")
+let c = Circle(name: "Circle")
+
+r is Rectangle //true
+r is Figure //true(Rectangle 클래스는 Figure 클래스를 상속하고 있다. 그래서 Rectangle 인스턴스를 Figure 클래스로 업캐스팅 할 수 있다
+r is Square //false(Square 클래스는 Rectangle을 상속한 클래스이다. 그래서 Rectangle 인스턴스를 Square 클래스로 다운캐스팅하는 것이 불가능하다)
+```
+
+## Type Casting Operator
+
+1. as 연산자라고 부른다.
+2. 왼쪽 피연산자의 형식의 오른쪽 형식과 호환된다면, 오른쪽 형식으로 캐스팅된 인스턴스를 리턴한다.
+3. 이것은 새로운 인스턴스가 리턴되는 것이 아니다.
+4. 이미 존재하는 인스턴스에서 오른쪽 피연산자 형식에 있는 멤버만 접근할 수 있는 임시 인스턴스를 리턴한다.
+5. 서로 호환되는 형식을 캐스팅하는 것을 'Bridging' 이라 한다.
+
+*세 가지 형태가 존재한다*
+1. Compile Time Cast
+👉 expression as Type<br/>
+```swift
+let nsstr = "str" as NSString //컴파일 타임의 결과가 확장된다
+```
+2. Runtime Cast
+👉 expression as? Type (Conditional Cast)<br/>
+👉 expression as! Type (Forced Cast)<br/>
+**컴파일 타임에는 결과를 알 수 없다**
+```swift
+t as? Triangle //Triangle
+t as! Triangle //Triangle
+```
+👉 원래 형식으로 캐스팅하는 것은 아무 의미가 없다. 주로 다운캐스팅에 사용하거나 값 형식을 다른 형식으로 캐스팅할 때 사용한다.
+```swift
+var upcasted: Figure = s //Square
+upcasted = s as Figure //Square
+
+upcasted as? = Square //Square
+upcasted as! Square //Square
+upcasted as? Rectangle //Square
+upcasted as! Rectangle //Squre
+
+upcasted as? Circle //nil
+upcasted as! Circle //오류
+```
+
+
+
+
