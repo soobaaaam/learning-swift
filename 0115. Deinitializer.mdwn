@@ -1,0 +1,35 @@
+# Deinitializer(소멸자, class전용)
+
+1. 직접 호출하지 않고, 인스턴스가 메모리에 제거되기 직전에 자동으로 호출된다.
+2. Deinitializer를 직접 구현하는 경우는 거의 없다.
+3. 파일 연결이나 네트워크 연결처럼 자동으로 정리되지 않는 리소스를 제거하거나 인스턴스 해제를 확인하는 것처럼 디버깅 용도로 사용한다.
+```swift
+//Syntax
+deinit {
+    Deinitialization
+}
+
+//Example
+class Size {
+    var width = 0.0
+    var height = 0.0
+}
+
+class Position {
+    var x = 0.0
+    var y = 0.0
+}
+
+class Rect {
+    var origin = Position()
+    var size = Size()
+
+    deinit {
+        print("deinit \(self)")
+    }
+}
+
+var r: Rect? = Rect()
+r = nil
+```
+

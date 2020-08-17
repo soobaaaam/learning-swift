@@ -1,0 +1,39 @@
+# Required Initializer(필수 생성자)
+```swift
+//Syntax
+required init(parameters) {
+    initialization
+}
+```
+```swift
+//Example
+class Figure {
+    var name: String
+
+    required init(name: String) {
+        self.name = name
+    }
+
+    func draw() {
+        print("draw \(name)")
+    }
+}
+
+class Rectangle: Figure {
+    var width = 0.0
+    var height = 0.0
+
+    init() {
+        width = 0.0
+        height = 0.0
+        super.init(name: "unknown")
+    }
+
+    required init(name: String) {
+        width = 0.0
+        height = 0.0
+        super.init(name: name)
+    }
+}
+```
+*Rectangle 클래스에서 name파라미터를 받는 initializer를 직접 구현하도록 강제하고 싶다면 required initializer를 사용한다*

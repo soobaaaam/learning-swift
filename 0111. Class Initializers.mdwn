@@ -1,0 +1,71 @@
+# Class Initializers
+
+## Designated Initializer(지정 생성자)
+```swift
+//Syntax
+init(parameters) {
+    initialization
+}
+```
+## Convenience Initializer(간편 생성자)
+```swift
+//Syntax
+convenience init(parameters0 {
+    initialization
+}
+```
+***
+```swift
+class Position {
+    var x: Double
+    var y: Double
+    
+    init(x: Double, y: Double) {
+        self.x = x
+        self.y = y
+    }
+
+    convenience init(x: Double) {
+        self.init(x: x, y: 0.0)
+    }
+}
+```
+## Initializer Inheritance
+```swift
+class Figure {
+    var name: String
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func draw() {
+        print("draw \(name)")
+    }
+
+    convenienve init() {
+        self.init(name: "unknown")
+    }
+}
+
+class Rectangle: Figure {
+    var width: Double = 0.0
+    var height: Double = 0.0
+
+    init(name: String, width: Double, height: Double) {
+        self.width = width
+        self.height = height
+        super.init(name: name)
+    }
+
+    override init(name: String) {
+        width = 0
+        height = 0
+        super.init(name: name)
+    }
+
+    convenienve init() {
+        self.init(name: "unknown")
+    }
+}
+```
