@@ -1,0 +1,47 @@
+# Extension
+
+1. 속성, 메서드, 생성자와 같은 멤버들을 형식에 추가하는 것을 '형식을 확장한다'라고 한다.
+2. extension으로 확장할 수 있는 대상은 클래스, 구조체, 열거형, 프로토콜이다.
+3. extension으로 멤버를 추가하는 것은 가능하지만, 기존 멤버를 오버라이딩하는 것은 불가능하다.
+```swift
+//Syntax
+extension Type {
+    computedProperty //계산 속성만 가능하다
+    computedTypeProperty
+    instanceMethod
+    typeMethod
+    initializer
+    subscript
+    NestedType
+}
+
+//기존 형식에 프로토콜을 추가할 때 사용
+extension Tyep: Protocol, ... {
+    requirements
+}
+```
+```swift
+//Example
+struct Size {
+    var width = 0.0
+    var height = 0.0
+}
+
+extension Size {
+    var area: Double {
+        return width * height
+    }
+}
+//속성에 접근하는 법
+let s = Size()
+s.width //0
+s.height //0
+s.area //0
+
+extension Size: Equatable {
+    public static func == (lhs: Size, rhs: Size) -> Bool
+    {
+        return lhs.width == rhs.width && lhs.height == rhs.height
+    }
+}
+```

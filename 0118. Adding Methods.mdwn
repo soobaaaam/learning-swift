@@ -1,0 +1,58 @@
+# Adding Methods
+```swift
+//Example1(화씨/섭씨 온도 변환)
+extension Double {
+    func toFahrenheit() -> Double {
+        return self * 9 / 5 + 32
+    }
+
+    func toCelsius() -> Double {
+        return (self - 32) * 5 / 9
+    }
+
+    static func converToFahrenheit(from celsius: Double) -> Double {
+        return celsius.toFahrenheit()
+    }
+}
+
+let c = 30.0
+c.toFahrenheit() //86
+
+Double.converToFahrenheit(from: 30.0) //86
+```
+```swift
+//Example2(날짜를 문자열로 포멧팅)
+extension Date {
+    func toString(format: String = "yyyyMMdd") -> String {
+        let privateFormatter = DateFormatter()
+        privateFormatter.dateFormat = format
+        return privateFormatter.string(from: self)
+    }
+}
+
+let today = Date()
+today.toString() //20200821
+
+today.toString(format: "MM/dd/yyyy") //08/21/2020
+```
+```swift
+//Example3(지정된 길이에 랜덤 문자열을 생성)
+extension String {
+    static func random(length: Int, charactersIn chars: String = "abcdABCD0123") -> String {
+        var randomString = String()
+        randomString.reserveCapacity(length)
+
+        for _ in 0 ..< length {
+            guard let char = chars.randomElement() else {
+                continue
+            }
+
+            randomString.append(char)
+        }
+
+        return randomString
+    }
+}
+
+String.random(length: 5) //5자리의 랜덤 문자 출력
+```

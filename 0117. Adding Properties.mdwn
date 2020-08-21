@@ -1,0 +1,31 @@
+# Adding Properties
+
+: extension으로 추가할 수 있는 속성은 계산 속성만 가능하다
+```swift
+//Example1
+extension Date {
+    var year: Int {
+        let cal = Calendar.current
+        return cal.component(.year, from: self)
+    }
+}
+
+let today = Date()
+today.year
+```
+```swift
+//Example2
+extension Double {
+    var radianValue: Double {
+        return (Double.pi * self) / 180.0
+    }
+
+    var degreeValue: Double {
+        return self * 180.0 / Double.pi
+    }
+}
+
+let dv = 45.0
+dv.radianValue
+dv.radianValue.degreeValue
+```
