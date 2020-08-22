@@ -1,0 +1,96 @@
+# Protocol Types
+
+1. 프로토콜은 First-class Citizen, 즉 독립적인 형식이다.
+2. 변수나 상수를 선언할 때 자료형을 사용하거나 파라미터의 자료형으로 사용할 수 있다. 리턴형으로 사용하는 것도 가능하다.
+```swift
+//Example
+protocol Resettable {
+    func reset()
+}
+
+class Size: Resettable {
+    var width = 0.0
+    var height = 0.0
+
+    func reset() {
+        width = 0.0
+        height = 0.0
+    }
+}
+
+let s = Size()
+
+let r: Resettable = Size()
+```
+## Protocol Conformance(프로토콜 적합성)
+```swift
+//Syntax
+instance is ProtocolName
+instance as ProtocolName
+instance as? ProtocolName
+instance as! ProtocolName
+
+//Example
+protocol Resettable {
+    func reset()
+}
+
+class Size: Resettable {
+    var width = 0.0
+    var height = 0.0
+
+    func reset() {
+        width = 0.0
+        height = 0.0
+    }
+}
+
+let s = Size()
+
+s is Resettable //true
+s is ExpressibleByNilLiteral //false
+
+let r = Size() as Resettable 
+
+r as? Size //원래의 형태로 구현
+```
+
+## Collections of Protocol Types
+```swift
+//Example
+protocol Figure {
+    func draw()
+}
+
+struct Triangle: Figure {
+    func draw() {
+        print("draw triangle")
+    }
+}
+
+class Rectangle: Figure {
+    func draw() {
+        print("draw rect")
+    }
+}
+
+struct Circle: Figure {
+    var radius = 0.0
+
+    func draw() {
+        print("draw circle")
+    }
+}
+let t = Triangle()
+let r = Rectangle()
+let c = Circle()
+
+let list: [Figure] = [t, r, c]
+
+for item in list {
+    item.draw()
+    if let c = item as? Circle {
+        c.radius
+    }
+}
+```

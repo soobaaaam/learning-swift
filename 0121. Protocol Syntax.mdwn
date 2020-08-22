@@ -1,0 +1,66 @@
+# Protocol Syntax
+
+1. 프로토콜 : 형식에서 공통적으로 제공하는 멤버 목록.
+2. 프로토콜에는 형식에서 구현해야하는 멤버가 선언되어있다.
+3. 실제 선언은 프로토콜에 포함되지 않는다.
+4. 대신 클래스와 구조체 같은 형식들이 프로토콜에 선언되어있는 멤버를 실제로 구현한다. -> '프로토콜을 따른다' '프로토콜을 채용한다'
+5. 프로토콜을 채용한 형식은 반드시 프로토콜에 선언되어있는 필수 멤버를 모두 구현해야한다. -> 이런 멤버들을 요구 사항(Requirements)라 부른다.
+6. 프로토콜은 다중 상속을 허용한다.
+```swift
+//Syntax
+protocol ProtocolName {
+    propertyRequirements
+    methodRequirements
+    initializerRequirements
+    subscriptRequirements
+}
+
+protocol ProtocolName: Protocol, ... {
+
+}
+
+//Example
+protocol Something {
+    func doSomething()
+}
+```
+## Adopting Protocols
+```swift
+//Syntax
+enum TypeName: ProtocolName, ... {
+
+}
+
+struct TypeName: ProtocolName, ... {
+
+}
+
+class TypeName: SuperClass, ProcolName, ... {
+
+}
+
+//Example
+struct Size: Something {
+    func doSomething() {
+
+    }
+}
+```
+## Class-Only Protocols
+```swift
+//Syntax
+protocol ProtocolName: AnyObject {
+
+}
+
+//Example
+protocol SomethingObject: AnyObject, Something {
+
+}
+
+class Object: SomethingObject {
+    func doSomething() {
+
+    }
+}
+```
