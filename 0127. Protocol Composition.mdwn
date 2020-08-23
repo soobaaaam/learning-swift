@@ -1,0 +1,52 @@
+# Protocol Composition
+```swift
+//Syntax
+Protocol & Protocol & ...
+
+//Example1
+protocol Resettable {
+    func reset()
+}
+
+protocol Printable {
+    func printValue()
+}
+
+class Size: Resettable, Printable {
+    var width = 0.0
+    var height = 0.0
+
+    func reset() {
+        width = 0.0
+        height = 0.0
+    }
+
+    func printValue() {
+        print(width, heigth)
+    }
+}
+
+class Circle: Resettable {
+    var radius = 0.0
+
+    func reset() {
+        radius = 0.0
+    }
+}
+
+class Oval: Circle {
+
+}
+
+let r: Resettable = Size()
+let [: Printable = Size()
+
+var rp: Resettable & Printable = Size()
+
+//Example2(클래스와 프토로콜이 혼합된 예)
+var cr: Circle & Resettable = Circle()
+
+cr = Oval()
+```
+
+

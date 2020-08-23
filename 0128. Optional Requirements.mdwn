@@ -1,0 +1,27 @@
+# Optional Requirements(선택적 요구사항)
+```swift
+//Syntax
+@objc protocol ProtocolName {
+    @objc optional requirements
+}
+
+//Example
+@objc protocol Drawable {
+    @objc optional var strokeWidth: Double { get set }
+    @objc optional var strokeColor: UIColor { get set }
+    func draw()
+    @objc optional func reset()
+}
+
+class Rectangle: Drawable {
+    func draw() {
+
+    }
+}
+
+let r: Drawable = Rectangle()
+r.draw()
+r.strokeWidth //nil
+r.strokeColor //nil
+```
+ 

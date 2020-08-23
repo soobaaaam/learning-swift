@@ -1,0 +1,25 @@
+# Protocol Extension
+```swift
+//Example
+protocol Figure {
+    var name: String { get }
+    func draw()
+}
+
+extension Figure where Self: Equatable {
+    func draw() {
+        print("draw figure")
+    }
+}
+
+struct Rectangle: Figure {
+    var name = ""
+
+    func draw() {
+        print("draw rectangle")
+    }
+}
+
+let r = Rectangle()
+r.draw()
+```
