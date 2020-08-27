@@ -1,0 +1,45 @@
+# Strong Reference Cycle(강한 참조 사이클)
+```swift
+//Example
+class Person {
+    var name = "John Doe"
+    var car: Car?
+
+    deinit {
+        print("person deinit")
+    }
+}
+
+class Car {
+    var model: String
+    var lessee: Person?
+
+    init(model: String) {
+        self.model = model
+    }
+
+    deinit {
+        print("car deinit")
+    }
+}
+
+var person: Person? = Person() //Person 인스턴스는 person 변수와 강한 참조로 연결된다
+var rentedCar: Car? = Car(model: "Porsche") //Car 인스턴스는 rentedCar 변수와 강한 참조로 연결된다
+
+person?.car = rentedCar //car 속성이 rentedCar 변수에 저장된 인스턴스를 소유하게된다(속성과 인스턴스가 강한 참조로 연결되고 Car 인스턴스의 참조 카운터가 1 증가한다
+
+rentedCar.lessee = person //lessee 속성과 person 인스턴스가 강한 참조로 연결되고 Person 인스턴스의 참조 카운터가 1 증가한다
+
+person = nil //Person 인스턴스의 참조 카운터가 1 감소한다
+rentedCar = nil //Car 인스턴스의 참조 카운터가 1 감소한다
+
+person = nil //아무 의미가 없다
+```
+
+1. Weak
+    - 인스턴스를 참조하지만 소유하지는 않는다
+    - 인스턴스를 참조하는 동안 대상 인스턴스는 언제든지 사라질 수 있다
+
+2. Unowned Reference
+    - non-optional 형식이다
+    - 인스턴스의 생명주기가 소유자와 같을때 사용한다
