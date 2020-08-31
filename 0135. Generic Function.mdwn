@@ -1,0 +1,63 @@
+# Generic Function
+```swift
+//Syntax
+func name<T>(parameters) -> Type {
+    code
+}
+
+//Example
+func swapValue<T>(lhs: inout T, rhs: inout T) {
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+}
+
+a = 1
+b = 2
+swapValue(lhs: &a, rhs: &b)
+a //2
+b //1
+
+var c = 1.2
+var d = 3.4
+swapValue(lhs: &c, rhs: &d)
+c //3.4
+d //1.2
+```
+## Type Constraints(형식 제약)
+```swift
+//Syntax
+<TypeParameter: ClassName>
+<TypeParameter: ProtocolName>
+
+//Example
+func swapValue<T: Equatable>(lhs: inout T, rhs: inout T) {
+    if lhs == rhs { 
+        return 
+    }    
+
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+}
+
+func swapValue(lhs: inout String, rhs: inout String) {
+    print("specialized version")
+
+    if lhs.caseInsensitiveCompare(rhs) == .orderedSame {
+        return
+    }
+
+    let tmp = lhs
+    lhs = rhs
+    rhs = tmp
+}
+
+var a = 1
+var b = 2
+swapValue(lhs: &a, rhs: &b) //generic version
+
+var c = "Swift"
+var d = "Programming")
+swapValue(lhs: &c, rhs: &d) //specialized version
+```

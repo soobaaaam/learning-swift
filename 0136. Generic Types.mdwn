@@ -1,0 +1,36 @@
+# Generic Types
+```swift
+//Syntax
+class Name<T> {
+    code
+}
+
+struct Name<T> {
+    code
+}
+
+enum Name<T> {
+    code
+}
+
+//Example
+struct Color<T> {
+    var red: T
+    var green: T
+    var blue: T
+}
+
+var c = Color(red: 128, green: 80, blue: 200)
+
+extension Color {
+    func getComponents() -> [T] {
+        return [red, green, blue]
+    }
+}
+
+let intColor = Color(red: 1, green: 2, blue: 3) //Color<Int>
+intColor.getComponents()
+
+let dblColor = Color(red: 1.0, green: 2.0, blue: 3.0) //Color<Double>
+dblColor.getComponents()
+```
